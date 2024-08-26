@@ -1,0 +1,62 @@
+{
+	"navigation": {
+	  "home": "OK ",
+	  "about": "Uber"
+	},
+	"header":{
+		"home": "Trang chủ",
+
+		"about": "Giới thiệu",
+		"about_us": "Giới thiệu về ITT",
+		"vision_mission": "Tầm nhìn - Sứ mệnh",
+		"organization": "Tổ chức",
+
+		"education": "Đào tạo",
+		"education_program": "Chương trình đào tạo",
+		"course": "Khóa học",
+
+		"research": "Khoa học & Công nghệ",
+
+		"seminar": "Seminar - Workshop",
+		"program_product": "Chương trình - Dự án",
+
+		"product": "Sản phẩm",
+
+		"cooperate":"Hợp tác",
+
+		"academic_partners": "Đối tác học thuật",
+		"business_partners": "Đối tác doanh nghiệp",
+
+		"contact": "Liên hệ"
+	},
+	"page": {
+		"home_page":{
+			"title_meta": "Trang chủ | Viện Công nghệ & Sáng tạo",
+			"description_meta": "Viện Công nghệ & Sáng tạo - Trường Đại học Quốc tế Sài Gòn",
+
+			"title_center": "CÁC ĐƠN VỊ TRỰC THUỘC",
+
+			"title_center_health": "Trung tâm khoa học sức khỏe & Môi trường",
+			"title_center_entrepreneurship": "Trung tâm khởi nghiệp & Quan hệ doanh nghiệp",
+			"title_center_leaning":"Trung tâm trải nghiệm & Phát triển kỹ năng mềm",
+
+			"read_more": "Xem thêm",
+
+			"news": "Tin tức",
+			"notify": "Thông báo",
+			"upcoming":"Sự kiện sắp tới"
+		},
+	  "about": {
+		"title": "Uber NextJs i18n",
+		"description": "Dich"
+	  }
+	},
+	"footer":{
+        "title":"VIỆN CÔNG NGHỆ & SÁNG TẠO",
+        "address":"8C - 18 Tống Hữu Định, Phường Thảo Điền, Thành phố Thủ Đức, Thành phố Hồ Chí Minh, Việt Nam",
+        "note": "LIÊN HỆ VỚI CHÚNG TÔI",
+        "mail":"iit@siu.edu.vn",
+        "phone":"+84 28.36203932",
+        "fact":"© Bản quyền 2023 SIU. Đã đăng ký Bản quyền"
+    }
+}

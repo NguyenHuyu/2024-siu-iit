@@ -1,0 +1,57 @@
+{
+	"navigation": {
+	  "home": "Startseite",
+	  "about": "Über"
+	},
+	"header":{
+		"home": "Home",
+		"about": "About us",
+		"about_us": "About IIT",
+		"vision_mission": "Vision - Mission",
+		"organization": "Organization",
+
+		"education": "Education",
+		"education_program": "Education Program",
+		"course": "Course",
+
+		"research": "Science & Technology",
+
+		"seminar": "Seminar - Workshop",
+		"program_product": "Program - Project",
+
+		"product": "Product",
+
+		"cooperate":"Cooperate",
+
+		"academic_partners": "Academic Partners",
+		"business_partners": "Business Partners",
+
+		"contact": "Contact"
+	},
+	"page": {
+		"home_page":{
+			"title_meta": "Home | Institute of Innovation & Technology",
+			"description_meta": "Institute of Innovation & Technology - The Saigon International University",
+			"title_center": "SUBSIDIARY UNITS",
+			"title_center_health": "Center for Health and Environment",
+			"title_center_entrepreneurship": "Center for Entrepreneurship and Business Cooperation",
+			"title_center_leaning":"Center for Experiential Learning & Soft Skills",
+			"read_more": "Read more",
+			"news": "News",
+			"notify": "Announcements",
+			"upcoming":"Upcoming Events"
+		},
+	  "about": {
+		"title": "Über uns",
+		"description": "Dies ist die About-Seite"
+	  }
+	},
+	"footer":{
+        "title":"INSTITUTE OF INNOVATION & TECHNOLOGY",
+        "address":"8C - 18 Tong Huu Dinh, Thao Dien Ward, Thu Duc City, Ho Chi Minh City, Vietnam",
+        "note": "CONTACT US",
+        "mail":"iit@siu.edu.vn",
+        "phone":"+84 28.36203932",
+        "fact":"© Copyright 2023 SIU. All right reserved"
+    }
+}
