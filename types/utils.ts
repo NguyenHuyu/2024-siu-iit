@@ -12,3 +12,15 @@ export type PageProps = {
       lang: Locale
    }
 }
+
+export interface DefaultSearchParams {
+   filter?: string
+   page?: string
+   size?: string
+   value?: string
+}
+
+export interface ResponseData {
+   status: number
+   message: string
+}

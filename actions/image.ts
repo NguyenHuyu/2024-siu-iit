@@ -10,8 +10,6 @@ export async function createImage(formData: FormData) {
       title: formData.get('title') as string,
       imageUrl: formData.get('imageUrl') as string
    }
-   console.log('values', values)
-
    if (!values.imageUrl || !values.title) {
       return {
          status: Status.BadRequest,
@@ -19,24 +17,54 @@ export async function createImage(formData: FormData) {
       }
    }
 
-   // try {
-   await prisma.image.create({
-      data: {
-         imageUrl: values?.imageUrl,
-         name: values.title
-      }
-   })
-   revalidatePath(`/${language}/admin/image`)
+   try {
+      await prisma.image.create({
+         data: {
+            imageUrl: values?.imageUrl,
+            name: values.title
+         }
+      })
+      revalidatePath(`/${language}/admin/image`)
 
-   return {
-      status: Status.Created,
-      message: 'Tạo ảnh thành công'
+      return {
+         status: Status.Created,
+         message: 'Tạo ảnh thành công'
+      }
+   } catch (error) {
+      console.log('error', error)
+      return {
+         status: Status.InternalServerError,
+         message: 'Có lỗi xảy ra, ở hệ thống!'
+      }
    }
-   // } catch (error) {
-   //    console.log('error', error)
-   //    return {
-   //       status: Status.InternalServerError,
-   //       message: 'Có lỗi xảy ra, ở hệ thống!'
-   //    }
-   // }
+}
+
+export async function getImages() {
+   try {
+      return await prisma.image.findMany()
+   } catch (error) {
+      return []
+   }
+}
+
+export async function deleteImage(id: string) {
+   const language = cookies().get('language')?.value as string
+   try {
+      await prisma.image.delete({
+         where: {
+            id
+         }
+      })
+      revalidatePath(`/${language}/admin/image`)
+
+      return {
+         status: Status.Ok,
+         message: 'Xóa ảnh thành công'
+      }
+   } catch (error) {
+      return {
+         status: Status.InternalServerError,
+         message: 'Có lỗi xảy ra, ở hệ thống!'
+      }
+   }
 }

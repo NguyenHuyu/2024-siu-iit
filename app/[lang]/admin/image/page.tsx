@@ -1,10 +1,17 @@
 import React from 'react'
-import { Share } from 'lucide-react'
+import { DotSquareIcon, GripVertical, Share } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Link } from 'next-view-transitions'
 import { PageProps } from '@/types/utils'
+import TablePattern from '@/components/table-pattern'
+import { Image } from '@prisma/client'
+import { deleteImage, getImages } from '@/actions/image'
+import NextImage from 'next/image'
+import DropdownPattern from '@/components/dropdown-pattern'
 
-export default function Page({ params }: PageProps) {
+export default async function Page({ params }: PageProps) {
+   const images = await getImages()
+
    return (
       <div className='flex flex-col'>
          <header className='sticky top-0 z-10 flex h-[57px] items-center gap-1 border-b bg-background px-4'>
@@ -19,9 +26,39 @@ export default function Page({ params }: PageProps) {
                </Button>
             </Link>
          </header>
-         <main className='grid flex-1 gap-4 overflow-auto p-4 md:grid-cols-2 lg:grid-cols-3'>
-            OK
-         </main>
+         <TablePattern<Image>
+            data={images}
+            columns={[
+               {
+                  title: 'Tên ảnh',
+                  render: (image) => <div className='max-w-28 truncate'>{image.name}</div>
+               },
+               {
+                  title: 'Tên ảnh',
+                  render: (image) => (
+                     <NextImage
+                        className='w-40 rounded-md'
+                        src={image?.imageUrl}
+                        width={500}
+                        height={250}
+                        alt={image?.name}
+                     />
+                  )
+               },
+               {
+                  title: 'Đường dẫn',
+                  render: (image) => <div className='w-80 truncate'>{image.imageUrl}</div>
+               },
+               {
+                  title: 'Actions',
+                  render: (image) => (
+                     <DropdownPattern deleteId={image.id} handleDelete={deleteImage}>
+                        <GripVertical />
+                     </DropdownPattern>
+                  )
+               }
+            ]}
+         />
       </div>
    )
 }

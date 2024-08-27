@@ -1,3 +1,4 @@
+import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette'
 import { withUt } from 'uploadthing/tw'
 
 export default withUt({
@@ -66,13 +67,36 @@ export default withUt({
             'accordion-up': {
                from: { height: 'var(--radix-accordion-content-height)' },
                to: { height: '0' }
+            },
+            scroll: {
+               to: {
+                  transform: 'translate(calc(-50% - 0.5rem))'
+               }
             }
          },
          animation: {
             'accordion-down': 'accordion-down 0.2s ease-out',
-            'accordion-up': 'accordion-up 0.2s ease-out'
+            'accordion-up': 'accordion-up 0.2s ease-out',
+            scroll:
+               'scroll var(--animation-duration, 40s) var(--animation-direction, forwards) linear infinite'
          }
       }
    },
-   plugins: [require('flowbite/plugin')]
+   plugins: [require('flowbite/plugin'), addVariablesForColors]
 })
+
+interface AddVariablesForColorsParams {
+   addBase: (base: Record<string, any>) => void
+   theme: (path: string) => Record<string, any>
+}
+
+function addVariablesForColors({ addBase, theme }: AddVariablesForColorsParams) {
+   const allColors = flattenColorPalette(theme('colors'))
+   const newVars = Object.fromEntries(
+      Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+   )
+
+   addBase({
+      ':root': newVars
+   })
+}

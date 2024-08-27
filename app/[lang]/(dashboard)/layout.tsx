@@ -1,3 +1,4 @@
+import Footer from '@/components/layout/footer'
 import Header from '@/components/layout/header'
 import { Locale } from '@/lib/i18n.config'
 import React, { Fragment } from 'react'
@@ -13,6 +14,7 @@ export default function Layout({
       <Fragment>
          <Header lang={params.lang} />
          {children}
+         <Footer lang={params.lang} />
       </Fragment>
    )
 }

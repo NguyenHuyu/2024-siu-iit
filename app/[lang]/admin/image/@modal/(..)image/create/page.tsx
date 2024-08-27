@@ -9,6 +9,7 @@ import { UploadDropzone } from '@/utils/uploadthing'
 import { createImage } from '@/actions/image'
 import { Status } from '@reflet/http'
 import { toast } from 'sonner'
+import { usePopup } from '@/hooks/usePopup'
 
 export default function Page() {
    const [image, setImage] = React.useState<{
@@ -17,7 +18,7 @@ export default function Page() {
    }>()
 
    const [copied, setCopied] = useState(false)
-
+   const { onToggle } = usePopup()
    const handleCopy = () => {
       if (image) {
          navigator.clipboard.writeText(image.imageUrl).then(() => {
@@ -30,6 +31,7 @@ export default function Page() {
    async function handleAction(formData: FormData) {
       const result = await createImage(formData)
       if (result.status === Status.Created) {
+         onToggle()
          toast.success(result.message)
       } else {
          toast.error(result.message)
