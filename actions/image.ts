@@ -28,7 +28,7 @@ export async function createImage(formData: FormData) {
 
       return {
          status: Status.Created,
-         message: 'Tạo ảnh thành công'
+         message: 'Tạo thành công'
       }
    } catch (error) {
       console.log('error', error)
@@ -47,7 +47,7 @@ export async function getImages() {
    }
 }
 
-export async function deleteImage(id: string) {
+export async function deleteImageById(id: string) {
    const language = cookies().get('language')?.value as string
    try {
       await prisma.image.delete({
@@ -59,7 +59,7 @@ export async function deleteImage(id: string) {
 
       return {
          status: Status.Ok,
-         message: 'Xóa ảnh thành công'
+         message: 'Xóa thành công'
       }
    } catch (error) {
       return {

@@ -8,10 +8,38 @@ datasource db {
 }
 
 
+model Banner {
+  id        String   @id @default(cuid())
+  name      String
+  imageUrl  String
+}
+
 model Image {
   id        String   @id @default(cuid())
   name      String
   imageUrl  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Category {
+  NEWS
+  EVENTS
+  ANNOUNCEMENTS
+  BULLETINS
+}
+
+model Bulletin {
+  id        String   @id @default(cuid())
+  title     String
+  description String?
+  imageUrl  String
+  body   String?
+  category  Category
+  isNew    Boolean @default(true)
+  isImportant  Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 

@@ -5,9 +5,10 @@ import { Link } from 'next-view-transitions'
 import { PageProps } from '@/types/utils'
 import TablePattern from '@/components/table-pattern'
 import { Image } from '@prisma/client'
-import { deleteImage, getImages } from '@/actions/image'
 import NextImage from 'next/image'
 import DropdownPattern from '@/components/dropdown-pattern'
+import { deleteImageById, getImages } from '@/actions/image'
+import CopyText from '@/components/copy-text'
 
 export default async function Page({ params }: PageProps) {
    const images = await getImages()
@@ -47,12 +48,16 @@ export default async function Page({ params }: PageProps) {
                },
                {
                   title: 'Đường dẫn',
-                  render: (image) => <div className='w-80 truncate'>{image.imageUrl}</div>
+                  render: (image) => (
+                     <div className='w-80 truncate'>
+                        <CopyText text={image.imageUrl} />
+                     </div>
+                  )
                },
                {
                   title: 'Actions',
                   render: (image) => (
-                     <DropdownPattern deleteId={image.id} handleDelete={deleteImage}>
+                     <DropdownPattern deleteId={image.id} handleDelete={deleteImageById}>
                         <GripVertical />
                      </DropdownPattern>
                   )

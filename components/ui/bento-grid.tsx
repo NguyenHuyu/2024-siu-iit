@@ -1,5 +1,4 @@
 import { cn } from '@/lib/utils'
-import { StaticImport } from 'next/dist/shared/lib/get-img-props'
 import Image from 'next/image'
 
 export const BentoGrid = ({
@@ -35,10 +34,9 @@ export const BentoGridItem = ({
    return (
       <div
          className={cn(
-            'row-span-1  rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border border-transparent justify-between flex flex-col space-y-4'
+            'row-span-1 rounded-xl border group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-4 dark:bg-black dark:border-white/[0.2] bg-white border-transparent justify-between flex flex-col space-y-4'
          )}
       >
-         {header}
          <div className='group-hover/bento:translate-x-2 transition duration-200'>
             <Image
                src={image}
@@ -47,7 +45,8 @@ export const BentoGridItem = ({
                height={300}
                className='flex-none rounded-md bg-slate-100 w-full'
             />
-            <div className='font-sans font-normal text-neutral-600 text-xs dark:text-neutral-300'>
+            <p className='truncate p-1'>{header}</p>
+            <div className='font-sans font-normal text-neutral-600 text-base line-clamp-2 text-justify dark:text-neutral-300'>
                {description}
             </div>
          </div>

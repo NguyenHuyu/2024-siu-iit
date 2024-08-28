@@ -1,10 +1,10 @@
 'use client'
 import { useEffect, useState } from 'react'
 import NextImage from 'next/image'
-import { Image } from '@prisma/client'
+import { Banner } from '@prisma/client'
 
 interface CarouselProps {
-   images: Image[]
+   images: Banner[]
 }
 
 const Carousel: React.FC<CarouselProps> = ({ images }) => {

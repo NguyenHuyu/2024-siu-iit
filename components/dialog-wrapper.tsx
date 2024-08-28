@@ -42,7 +42,7 @@ export default function DialogWrapper({
                </DialogHeader>
             )}
             <Separator />
-            <ScrollArea className='h-auto max-h-96 w-full'>{children}</ScrollArea>
+            <ScrollArea className='h-auto max-h-96 lg:max-h-[30rem] w-full'>{children}</ScrollArea>
          </DialogContent>
       </Dialog>
    )

@@ -1,9 +1,9 @@
 import React from 'react'
 import Carousel from '@/components/carousel'
-import { getImages } from '@/actions/image'
+import { getBanners } from '@/actions/banner'
 
 export default async function Banner() {
-   const images = await getImages()
+   const images = await getBanners()
 
    return (
       <div className='w-full mx-auto lg:max-w-full md:pt-4 lg:pt-8'>

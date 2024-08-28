@@ -4,7 +4,7 @@ import { Metadata } from 'next'
 export const metadata: Metadata = {
    title: {
       default: 'Admin',
-      template: '%s | Next.js App Router'
+      template: '%s | Admin'
    },
    metadataBase: new URL('https://iit.siu.edu.vn')
 }

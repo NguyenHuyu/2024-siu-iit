@@ -6,10 +6,10 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { UploadDropzone } from '@/utils/uploadthing'
-import { createImage } from '@/actions/image'
 import { Status } from '@reflet/http'
 import { toast } from 'sonner'
 import { usePopup } from '@/hooks/usePopup'
+import { createImage } from '@/actions/image'
 
 export default function Page() {
    const [image, setImage] = React.useState<{
@@ -39,7 +39,7 @@ export default function Page() {
    }
 
    return (
-      <DialogWrapper label='Update ảnh'>
+      <DialogWrapper label='Tải ảnh'>
          <form action={handleAction} className='flex flex-col items-center gap-5'>
             <UploadDropzone
                endpoint='imageUploader'
@@ -47,6 +47,9 @@ export default function Page() {
                appearance={{
                   container: {
                      backgroundColor: 'white'
+                  },
+                  button: {
+                     backgroundColor: 'black'
                   }
                }}
                onClientUploadComplete={(result) => {

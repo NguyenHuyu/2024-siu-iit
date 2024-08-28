@@ -17,6 +17,10 @@ const nextConfig = {
          {
             hostname: 'unsplash.com',
             protocol: 'https'
+         },
+         {
+            hostname: 'siu.edu.vn',
+            protocol: 'https'
          }
       ]
    }
