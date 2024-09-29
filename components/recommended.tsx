@@ -35,15 +35,15 @@ export async function RecommendedProducts({
                               </div>
                            </div>
                         ) : null}
-                        {
-							product.imageUrl  && <Image
-							src={product?.imageUrl}
-							width={400}
-							height={400}
-							className='relative rounded-xl group-hover:opacity-80 h-40 w-40 md:h-72 md:w-96 object-cover'
-							alt={product.title}
-						 />
-						}
+                        {product.imageUrl && (
+                           <Image
+                              src={product?.imageUrl}
+                              width={400}
+                              height={400}
+                              className='relative rounded-xl group-hover:opacity-80 h-40 w-40 md:h-72 md:w-96 object-cover'
+                              alt={product.title}
+                           />
+                        )}
                      </div>
                      <div className='truncate text-sm font-medium text-black group-hover:text-vercel-cyan'>
                         {product.description}

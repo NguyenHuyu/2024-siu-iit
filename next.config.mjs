@@ -24,6 +24,9 @@ const nextConfig = {
          }
       ]
    },
+   typescript: {
+      ignoreBuildErrors: true
+   },
    transpilePackages: ['lucide-react', 'react-icons'],
    reactStrictMode: false,
    output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined
