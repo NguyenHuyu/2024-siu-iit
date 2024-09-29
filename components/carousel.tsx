@@ -30,14 +30,14 @@ const Carousel: React.FC<CarouselProps> = ({ images }) => {
             {images.map((src, index) => (
                <div
                   key={index}
-                  className='flex-none h-full sm:h-72 w-full md:h-[18rem] lg:h-[40rem] relative'
+                  className='flex-none h-full sm:h-72 w-full md:h-[18rem] lg:h-[30rem] xl:h-[40rem] 2xl:h-full  relative'
                >
                   <NextImage
                      src={src.imageUrl}
                      alt={`Slide ${index + 1}`}
                      width={4000}
                      height={4000}
-                     className='md:rounded-lg h-full sm:h-72 w-full md:h-[18rem] lg:h-[30rem] xl:h-[40rem] object-fill'
+                     className='md:rounded-lg h-full sm:h-72 w-full md:h-[18rem] lg:h-[30rem] xl:h-[40rem] 2xl:h-full  object-fill'
                   />
                </div>
             ))}

@@ -2,7 +2,7 @@
 import { formSchema } from '@/app/[lang]/admin/bulletin/_components/bulletin-form'
 import prisma from '@/lib/database'
 import { DefaultSearchParams } from '@/types/utils'
-import { Bulletin, Prisma } from '@prisma/client'
+import { Bulletin } from '@prisma/client'
 import { Status } from '@reflet/http'
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
@@ -13,7 +13,11 @@ export async function createBulletin(values: z.infer<typeof formSchema>) {
 
    try {
       await prisma.bulletin.create({
-         data: values
+         data: {
+            ...values,
+            imageUrl: values.imageUrl || '',
+            category: values.category
+         }
       })
 
       revalidatePath(`/${language}/admin/bulletin`)

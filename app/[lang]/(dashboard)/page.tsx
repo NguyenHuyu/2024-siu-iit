@@ -81,12 +81,13 @@ export default async function page({ params, searchParams }: Props) {
                            >
                               {movie.imageUrl && (
                                  <Image
-                                 src={movie.imageUrl}
-                                 alt={movie.title}
-                                 width={300}
-                                 height={300}
-                                 className='flex-none object-cover rounded-md bg-slate-100 h-32 w-36 md:w-40'
-                              />)}
+                                    src={movie.imageUrl}
+                                    alt={movie.title}
+                                    width={300}
+                                    height={300}
+                                    className='flex-none object-cover rounded-md bg-slate-100 h-32 w-36 md:w-40'
+                                 />
+                              )}
                               <div className='min-w-0 relative flex-auto p-1'>
                                  <h2 className='font-semibold text-slate-900 truncate pr-20'>
                                     {movie.title}
