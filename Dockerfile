@@ -32,6 +32,7 @@ COPY . .
 # Copy the environment file
 COPY .env.local .env.local
 
+RUN npx prisma generate
 # Build the project
 RUN pnpm build
 
