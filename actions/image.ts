@@ -7,23 +7,38 @@ import { cookies } from 'next/headers'
 export async function createImage(formData: FormData) {
    const language = cookies().get('language')?.value as string
    const values = {
-      title: formData.get('title') as string,
-      imageUrl: formData.get('imageUrl') as string
+      imageUrl: formData.get('file') as string
    }
-   if (!values.imageUrl || !values.title) {
+   if (!values.imageUrl) {
       return {
          status: Status.BadRequest,
          message: 'Chưa nhập đủ thông tin'
       }
    }
+   const imageForm = new FormData()
+   imageForm.append('file', formData.get('file') as Blob)
+   imageForm.append('typePath', 'iit')
 
    try {
+      const result = await fetch('https://kd.io.vn/api/files', {
+         method: 'POST',
+         body: imageForm
+      })
+      if (!result.ok) {
+         return {
+            status: Status.InternalServerError,
+            message: 'Co loi xay ra, khi upload anh!'
+         }
+      }
+      const data = await result.json()
+
       await prisma.image.create({
          data: {
-            imageUrl: values?.imageUrl,
-            name: values.title
+            imageUrl: data?.fileName,
+            name: 'image'
          }
       })
+
       revalidatePath(`/${language}/admin/image`)
 
       return {
@@ -31,7 +46,6 @@ export async function createImage(formData: FormData) {
          message: 'Tạo thành công'
       }
    } catch (error) {
-      console.log('error', error)
       return {
          status: Status.InternalServerError,
          message: 'Có lỗi xảy ra, ở hệ thống!'

@@ -21,6 +21,10 @@ const nextConfig = {
          {
             hostname: 'siu.edu.vn',
             protocol: 'https'
+         },
+         {
+            hostname: 'kd.io.vn',
+            protocol: 'https'
          }
       ]
    },
@@ -28,8 +32,8 @@ const nextConfig = {
       ignoreBuildErrors: true
    },
    transpilePackages: ['lucide-react', 'react-icons'],
-   reactStrictMode: false,
-   output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined
+   reactStrictMode: false
+   // output: process.env.NODE_ENV === 'production' ? 'standalone' : undefined
 }
 
 export default nextConfig

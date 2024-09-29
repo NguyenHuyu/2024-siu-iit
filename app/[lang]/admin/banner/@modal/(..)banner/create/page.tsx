@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { UploadDropzone } from '@/utils/uploadthing'
+import { UploadButton, UploadDropzone } from '@/utils/uploadthing'
 import { Status } from '@reflet/http'
 import { toast } from 'sonner'
 import { usePopup } from '@/hooks/usePopup'
@@ -41,7 +41,7 @@ export default function Page() {
    return (
       <DialogWrapper label='Tải ảnh banner'>
          <form action={handleAction} className='flex flex-col items-center gap-5'>
-            <UploadDropzone
+            {/* <UploadDropzone
                endpoint='imageUploader'
                className='w-full'
                appearance={{
@@ -60,6 +60,20 @@ export default function Page() {
                }}
                onUploadError={(error) => {
                   console.error(error)
+               }}
+            /> */}
+            <UploadButton
+               endpoint='imageUploader'
+               onClientUploadComplete={(result) => {
+                  // Do something with the response
+                  setImage({
+                     imageUrl: result[0].url,
+                     title: result[0].name
+                  })
+               }}
+               onUploadError={(error: Error) => {
+                  // Do something with the error.
+                  alert(`ERROR! ${error.message}`)
                }}
             />
             {image && (
