@@ -58,3 +58,7 @@ export async function verifySession() {
 
    return session
 }
+
+export function deleteSession() {
+   cookies().delete('session')
+}

@@ -1,6 +1,6 @@
 'use server'
 import prisma from '@/lib/database'
-import { createSession } from '@/lib/session'
+import { createSession, deleteSession } from '@/lib/session'
 import {
    SignupFormSchema,
    FormState,
@@ -88,5 +88,13 @@ export async function login(state: LoginFormState, formData: FormData) {
 
    return {
       message: 'Login successful'
+   }
+}
+
+export async function logout() {
+   deleteSession()
+
+   return {
+      message: 'Logout successful'
    }
 }

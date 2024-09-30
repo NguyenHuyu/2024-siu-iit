@@ -6,6 +6,8 @@ import clsx from 'clsx'
 import { Menu, X } from 'lucide-react'
 import { useState } from 'react'
 import { ScrollArea } from '@/components/ui/scroll-area'
+import { Button } from '../ui/button'
+import { logout } from '@/actions/auth'
 
 export function NavbarAdmin() {
    const [isOpen, setIsOpen] = useState(false)
@@ -60,6 +62,11 @@ export function NavbarAdmin() {
                })}
             </nav>
          </ScrollArea>
+         <div className='absolute bottom-0 text-white w-full p-2'>
+            <Button variant='ghost' onClick={() => logout()} className='w-full'>
+               Đăng xuất
+            </Button>
+         </div>
       </div>
    )
 }
