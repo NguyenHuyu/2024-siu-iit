@@ -14,6 +14,8 @@ import {
    SheetTrigger
 } from '@/components/ui/sheet'
 import Navbar from './navbar'
+import { NavbarAdmin } from './navbar-admin'
+import MobileNav from './mobile-nav'
 
 export default async function Header({ lang }: { lang: Locale }) {
    const { header } = await getDictionary(lang)
@@ -146,7 +148,7 @@ export default async function Header({ lang }: { lang: Locale }) {
    ]
 
    return (
-      <header>
+      <header className='pb-16 md:pb-12'>
          <main className='hidden md:block bg-gradient-to-r from-[#8dbffd] via-gray-300 to-[#8dbffd]  w-full fixed z-50 px-6'>
             <div className='mx-auto flex justify-between items-center py-3 md:p-1  font-semibold'>
                <div className='flex items-center md:gap-2'>
@@ -245,65 +247,8 @@ export default async function Header({ lang }: { lang: Locale }) {
                </div>
             </div>
          </main>
-         <div className='flex justify-between px-6 py-2 items-center md:hidden bg-gradient-to-r from-[#8dbffd] via-gray-300 to-[#8dbffd]'>
-            <div className='flex items-center md:gap-2'>
-               <Link href={`/${lang}`}>
-                  <div className='flex items-center gap-1 md:gap-2'>
-                     <Image
-                        src={SIU}
-                        width={10000}
-                        height={10000}
-                        className='w-16'
-                        alt='Viện công nghệ sáng tạo IIT - Trường Đại học Quốc tế Sài Gòn SIU'
-                     />
-                     <Image
-                        src={IIT}
-                        width={10000}
-                        height={10000}
-                        className='w-28'
-                        alt='Viện công nghệ sáng tạo IIT - Trường Đại học Quốc tế Sài Gòn SIU'
-                     />
-                  </div>
-               </Link>
-            </div>
-            {/* <Sheet>
-               <SheetTrigger>
-                  <svg fill='currentColor' viewBox='0 0 20 20' className='w-6 h-6'>
-                     <path
-                        fillRule='evenodd'
-                        d='M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z'
-                        clipRule='evenodd'
-                     ></path>
-                  </svg>
-               </SheetTrigger>
 
-               <SheetContent>
-                  <SheetHeader>
-                     <SheetTitle>Danh mục</SheetTitle>
-                     <SheetDescription>
-                        {lang === 'vi'
-                           ? listVI.map((item, index) => (
-                                <Link href={item.url} key={index} className='text-left'>
-                                   <span className='px-1 py-2 block hover:bg-gray-200'>
-                                      {item.label}
-                                   </span>
-                                </Link>
-                             ))
-                           : listEN.map((item, index) => (
-                                <Link href={item.url} key={index} className='text-left'>
-                                   <span className='px-1 py-2 block hover:bg-gray-200'>
-                                      {item.label}
-                                   </span>
-                                </Link>
-                             ))}
-                     </SheetDescription>
-                     <div className='flex flex-row md:gap-2 items-center '>
-                        <LocaleSwitcher />
-                     </div>
-                  </SheetHeader>
-               </SheetContent>
-            </Sheet> */}
-         </div>
+         <MobileNav header={header} />
       </header>
    )
 }
