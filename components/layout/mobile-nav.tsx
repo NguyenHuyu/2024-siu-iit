@@ -151,21 +151,11 @@ export default function MobileNav({ header }: { header: any }) {
             })}
          >
             <nav className='space-y-6 px-2 pb-24 pt-5'>
-               {navbar.map((section) => {
-                  return (
-                     <div key={section.href}>
-                        <div className='mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-400/80'>
-                           <div>{section.name}</div>
-                        </div>
-
-                        <div className='space-y-1'>
-                           {navbar.map((item) => (
-                              <GlobalNavItem key={item.href} item={item} close={close} />
-                           ))}
-                        </div>
-                     </div>
-                  )
-               })}
+               <div className='space-y-1'>
+                  {navbar.map((item) => (
+                     <GlobalNavItem key={item.href} item={item} close={close} />
+                  ))}
+               </div>
             </nav>
          </ScrollArea>
       </div>
