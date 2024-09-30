@@ -62,13 +62,12 @@ const items = [
 
 export default function Page() {
    return (
-      <div className='md:pt-20'>
-         <div className='h-72 relative w-full overflow-hidden bg-blue-200/20 flex flex-col items-center justify-center rounded-lg'>
+      <div className='md:pt-10'>
+         <div className='md:h-72 relative w-full overflow-hidden bg-blue-200/20 flex flex-col items-center justify-center rounded-lg'>
             <div className='absolute  pointer-events-none' />
-            <Boxes />
             <h1
                className={cn(
-                  'text-center mb-8 py-2 text-4xl font-bold leading-none md:text-5xl xl:text-6xl text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-blue-600 via-30% to-green-600 '
+                  'text-center py-8 text-4xl font-bold leading-none md:text-5xl xl:text-6xl text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-blue-600 via-30% to-green-600 '
                )}
             >
                KHÓA HỌC

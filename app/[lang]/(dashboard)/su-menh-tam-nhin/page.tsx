@@ -120,8 +120,8 @@ export default async function Page({ params }: PageProps) {
    ]
    return (
       <div className='py-8 md:py-20'>
-         <div className='container mx-auto lg:gap-8 xl:gap-0 lg:py-16 '>
-            <h1 className='text-center py-2 text-4xl font-bold leading-none md:text-5xl xl:text-6xl text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-blue-600 via-30% to-green-600 '>
+         <div className='md:container mx-auto lg:gap-8 xl:gap-0 lg:py-16'>
+            <h1 className='text-center py-2 text-4xl font-bold leading-none md:text-4xl xl:text-5xl text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-blue-600 via-30% to-green-600 '>
                {mission_vision.vission} - {mission_vision.mission}
             </h1>
          </div>

@@ -32,7 +32,7 @@ export default function page() {
 
    const Item = ({ item }: any) => {
       return (
-         <div className='p-4 md:w-1/3'>
+         <div className='p-4 w-full md:w-1/3'>
             <div className='h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden'>
                <div className='w-full'>
                   <div className='w-full flex p-2'>
@@ -122,9 +122,9 @@ export default function page() {
 
    return (
       <div className=''>
-         <div className='h-96 w-full rounded-md flex md:items-center md:justify-center bg-black/[0.7] antialiased bg-grid-white/[0.02] relative overflow-hidden'>
+         <div className='md:h-96 w-full rounded-md flex md:items-center md:justify-center bg-black/[0.7] antialiased bg-grid-white/[0.02] relative overflow-hidden'>
             <Spotlight className='-top-40 left-0 md:left-60 md:-top-20' fill='white' />
-            <div className='p-4 max-w-7xl mx-auto relative z-10  w-full pt-28'>
+            <div className='p-4 max-w-7xl mx-auto relative z-10  w-full md:pt-28'>
                <h1 className='py-4 text-4xl md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200 bg-opacity-50'>
                   ĐỐI TÁC HỌC THUẬT
                </h1>

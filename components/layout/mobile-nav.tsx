@@ -39,6 +39,13 @@ export default function MobileNav({ header }: { header: any }) {
          itemss: []
       },
       {
+         name: header.organization,
+         href: `/${lang}/co-cau-to-chuc`,
+         bg: 'bg-transparent',
+         pointer: 'cursor-pointer',
+         itemss: []
+      },
+      {
          name: header.education_program,
          href: `/${lang}/chuong-trinh-dao-tao`,
          bg: 'bg-transparent',
@@ -146,7 +153,7 @@ export default function MobileNav({ header }: { header: any }) {
             <nav className='space-y-6 px-2 pb-24 pt-5'>
                {navbar.map((section) => {
                   return (
-                     <div key={section.name}>
+                     <div key={section.href}>
                         <div className='mb-2 px-3 text-xs font-semibold uppercase tracking-wider text-gray-400/80'>
                            <div>{section.name}</div>
                         </div>

@@ -5,16 +5,6 @@ import LocaleSwitcher from '@/components/swicher-locale'
 import Image from 'next/image'
 import SIU from '@/public/assets/logosiu.png'
 import IIT from '@/public/assets/logoiit.png'
-import {
-   Sheet,
-   SheetContent,
-   SheetDescription,
-   SheetHeader,
-   SheetTitle,
-   SheetTrigger
-} from '@/components/ui/sheet'
-import Navbar from './navbar'
-import { NavbarAdmin } from './navbar-admin'
 import MobileNav from './mobile-nav'
 
 export default async function Header({ lang }: { lang: Locale }) {

@@ -1,4 +1,5 @@
 import { getDictionary } from '@/lib/dictionary'
+import { cn } from '@/lib/utils'
 import { PageProps } from '@/types/utils'
 import { Metadata } from 'next'
 import React from 'react'
@@ -27,13 +28,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function ProgramingPage({ params }: PageProps) {
    const { page } = await getDictionary(params.lang)
    return (
-      <div className=' md:pt-32'>
-         <div className='p-4 max-w-7xl  mx-auto relative z-10 w-full md:pt-0'>
-            <h1 className='text-4xl md:text-5xl font-bold text-center uppercase'>
-               {page.education.title}
+      <div className='md:pt-10'>
+         <div className='md:h-72 relative w-full overflow-hidden bg-blue-200/20 flex flex-col items-center justify-center rounded-lg'>
+            <div className='absolute  pointer-events-none' />
+            <h1
+               className={cn(
+                  'max-w-xs md:max-w-full text-center py-8 text-4xl font-bold leading-none md:text-5xl xl:text-6xl text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-blue-600 via-30% to-green-600 '
+               )}
+            >
+               CHƯƠNG TRÌNH ĐÀO TẠO
             </h1>
          </div>
-         <div className='container md:max-w-5xl mx-auto lg:gap-8 xl:gap-0 lg:py-8'>
+         <div className='py-4 text-justify container md:max-w-5xl mx-auto lg:gap-8 xl:gap-0 lg:py-8'>
             <div className='space-y-6'>
                <h2 className='text-2xl font-bold text-center'>
                   {page.education.desc.title}
