@@ -3,6 +3,14 @@ const nextConfig = {
    images: {
       remotePatterns: [
          {
+            hostname: 'dnbvietnam.com',
+            protocol: 'https'
+         },
+         {
+            hostname: 'th.bing.com',
+            protocol: 'https'
+         },
+         {
             hostname: 'via.placeholder.com',
             protocol: 'https'
          },
