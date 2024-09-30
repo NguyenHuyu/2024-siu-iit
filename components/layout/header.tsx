@@ -18,125 +18,6 @@ import Navbar from './navbar'
 export default async function Header({ lang }: { lang: Locale }) {
    const { header } = await getDictionary(lang)
 
-   const listVI = [
-      {
-         label: 'Trang chủ',
-         url: `/${lang}`
-      },
-
-      {
-         label: 'Giới thiệu IIT',
-         url: `/${lang}/gioi-thieu-iit`
-      },
-      {
-         label: 'Sứ mệnh tầm nhìn',
-         url: `/${lang}/su-menh-tam-nhin`
-      },
-      {
-         label: 'Cơ cấu tổ chức',
-         url: `/${lang}/co-cau-to-chuc`
-      },
-      {
-         label: 'Chương trình đào tạo',
-         url: `/${lang}/chuong-trinh-dao-tao`
-      },
-      {
-         label: 'Khóa học',
-         url: `/${lang}/khoa-hoc`
-      },
-      {
-         label: 'Seminar',
-         url: `/${lang}/seminar`
-      },
-      {
-         label: 'Chương trình dự án',
-         url: `/${lang}/chuong-trinh-du-an`
-      },
-      {
-         label: 'Sản phẩm NCKH-CGCN',
-         url: `/${lang}/san-pham-nckh-cgcn`
-      },
-      {
-         label: 'Công bố khoa học',
-         url: `/${lang}/cong-bo-khoa-hoc`
-      },
-      {
-         label: 'Sách giáo trình',
-         url: `/${lang}/sach-giao-trinh`
-      },
-      {
-         label: 'Đối tác học thuật',
-         url: `/${lang}/doi-tac-hoc-thuat`
-      },
-      {
-         label: 'Đối tác doanh nghiệp',
-         url: `/${lang}/doi-tac-doanh-nghiep`
-      },
-      {
-         label: 'Liên hệ',
-         url: `/${lang}/lien-he`
-      }
-   ]
-
-   const listEN = [
-      {
-         label: 'Home',
-         url: `/${lang}`
-      },
-      {
-         label: 'About IIT',
-         url: `/${lang}/gioi-thieu-iit`
-      },
-      {
-         label: 'Mission vision',
-         url: `/${lang}/su-menh-tam-nhin`
-      },
-      {
-         label: 'Organizational structure',
-         url: `/${lang}/co-cau-to-chuc`
-      },
-      {
-         label: 'Education',
-         url: `/${lang}/chuong-trinh-dao-tao`
-      },
-      {
-         label: 'Courses',
-         url: `/${lang}/khoa-hoc`
-      },
-      {
-         label: 'Seminar',
-         url: `/${lang}/seminar`
-      },
-      {
-         label: 'Project',
-         url: `/${lang}/chuong-trinh-du-an`
-      },
-      {
-         label: 'Research products',
-         url: `/${lang}/san-pham-nckh-cgcn`
-      },
-      {
-         label: 'Publications',
-         url: `/${lang}/cong-bo-khoa-hoc`
-      },
-      {
-         label: 'Textbook',
-         url: `/${lang}/sach-giao-trinh`
-      },
-      {
-         label: 'Academic partners',
-         url: `/${lang}/doi-tac-hoc-thuat`
-      },
-      {
-         label: 'Business partners',
-         url: `/${lang}/doi-tac-doanh-nghiep`
-      },
-      {
-         label: 'Contact',
-         url: `/${lang}/lien-he`
-      }
-   ]
-
    const navbar = [
       {
          href: `/${lang}`,
@@ -205,13 +86,31 @@ export default async function Header({ lang }: { lang: Locale }) {
          items: [
             {
                name: header.seminar,
-               href: '/vi/khoa-hoc-cong-nghe/seminar-workshops',
+               href: '/vi/seminar-workshops',
                bg: 'bg-transparent',
                itemss: []
             },
             {
                name: header.program_product,
-               href: '/vi/khoa-hoc-cong-nghe/chuong-trinh-du-an',
+               href: '/vi/chuong-trinh-du-an',
+               bg: 'bg-transparent',
+               itemss: []
+            },
+            {
+               name: header.product,
+               href: '/vi/san-pham-nghien-cuu-chuyen-giao-cong-nghe',
+               bg: 'bg-transparent',
+               itemss: []
+            },
+            {
+               name: header.publication,
+               href: '/vi/cong-bo-khoa-hoc',
+               bg: 'bg-transparent',
+               itemss: []
+            },
+            {
+               name: header.others,
+               href: '/vi/sach-giao-trinh-bai-giang',
                bg: 'bg-transparent',
                itemss: []
             }
