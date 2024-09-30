@@ -7,6 +7,15 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  name      String
+  role      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
 
 model Banner {
   id        String   @id @default(cuid())
@@ -27,14 +36,22 @@ enum Category {
   EVENTS
   ANNOUNCEMENTS
   BULLETINS
+  COURSES
+  SEMINARS
+  PROJECTS
+  PRODUCTS
+  PUBLICATIONS
+  OTHERS
+  ACADEMIC
+  BUSSINESS
 }
 
 model Bulletin {
   id        String   @id @default(cuid())
   title     String
-  description String?
+  description String
   imageUrl  String
-  body   String?
+  body   String
   category  Category
   isNew    Boolean @default(true)
   isImportant  Boolean @default(false)

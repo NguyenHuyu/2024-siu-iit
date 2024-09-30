@@ -16,11 +16,12 @@ export async function createImage(formData: FormData) {
       }
    }
    const imageForm = new FormData()
+
    imageForm.append('file', formData.get('file') as Blob)
    imageForm.append('typePath', 'iit')
 
    try {
-      const result = await fetch('https://kd.io.vn/api/files', {
+      const result = await fetch(process.env.NEXT_APP_API_URL as string, {
          method: 'POST',
          body: imageForm
       })

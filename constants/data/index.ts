@@ -26,5 +26,14 @@ export const demos: { name: string; items: Item[] }[] = [
             slug: 'vi/admin/bulletin'
          }
       ]
+   },
+   {
+      name: 'Quản lý Tài khoản',
+      items: [
+         {
+            name: 'Tài khoản',
+            slug: 'vi/admin/register'
+         }
+      ]
    }
 ]

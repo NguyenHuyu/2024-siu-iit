@@ -15,7 +15,8 @@ export async function createBulletin(values: z.infer<typeof formSchema>) {
       await prisma.bulletin.create({
          data: {
             ...values,
-            imageUrl: values.imageUrl || '',
+            body: values.body || '',
+            imageUrl: values?.imageUrl || '',
             category: values.category
          }
       })
@@ -109,7 +110,12 @@ export async function updateBulletinById(id: string, values: z.infer<typeof form
          where: {
             id
          },
-         data: values
+         data: {
+            ...values,
+            body: values.body || '',
+            imageUrl: values?.imageUrl || '',
+            category: values.category
+         }
       })
 
       revalidatePath(`/${language}/admin/bulletin`)

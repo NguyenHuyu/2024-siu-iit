@@ -58,7 +58,7 @@ export default async function page({ params, searchParams }: Props) {
    ]
 
    return (
-      <div className='min-h-[200vh]'>
+      <div className=''>
          <Banner />
 
          <Center dataCenter={dataCenter} />
@@ -71,7 +71,7 @@ export default async function page({ params, searchParams }: Props) {
                         <CardTitle className='text-2xl font-semibold'>Tin tức</CardTitle>
                      </Link>
                   </CardHeader>
-                  <ScrollArea className='h-screen w-full'>
+                  <ScrollArea className='h-[830px] w-full'>
                      <CardContent className='space-y-2'>
                         {news.content.map((movie) => (
                            <Link
@@ -124,7 +124,7 @@ export default async function page({ params, searchParams }: Props) {
                         </CardTitle>
                      </Link>
                   </CardHeader>
-                  <ScrollArea className='h-screen w-full'>
+                  <ScrollArea className='h-[830px] w-full'>
                      <CardContent className='space-y-2'>
                         {announcements?.content?.map((movie) => (
                            <div

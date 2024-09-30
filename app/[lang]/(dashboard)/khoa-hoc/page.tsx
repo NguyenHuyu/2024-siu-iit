@@ -11,6 +11,7 @@ import {
 } from '@tabler/icons-react'
 import { Boxes } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { PageProps } from '@/types/utils'
 
 const Skeleton = () => (
    <div className='flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100'></div>
@@ -60,7 +61,7 @@ const items = [
    }
 ]
 
-export default function Page() {
+export default function Page({ params }: PageProps) {
    return (
       <div className='md:pt-10'>
          <div className='md:h-72 relative w-full overflow-hidden bg-blue-200/20 flex flex-col items-center justify-center rounded-lg'>
@@ -77,10 +78,10 @@ export default function Page() {
             {items.map((item, i) => (
                <BentoGridItem
                   key={i}
+                  url={`/${params.lang}/`}
                   title={item.title}
                   description={item.description}
-                  header={item.header}
-                  icon={item.icon}
+                  header={''}
                   className={i === 3 || i === 6 ? 'md:col-span-2' : ''}
                />
             ))}

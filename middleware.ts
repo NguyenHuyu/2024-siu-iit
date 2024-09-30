@@ -1,7 +1,7 @@
 import { NextFetchEvent, NextMiddleware, NextRequest, NextResponse } from 'next/server'
 import { match as matchLocale } from '@formatjs/intl-localematcher'
 import { i18n } from '@/lib/i18n.config'
-import { publicRoutes } from '@/routes'
+import { publicRoutes, protectedRoutes, authRoutes } from '@/routes'
 import { cookies } from 'next/headers'
 import { decrypt } from '@/lib/session'
 
@@ -34,25 +34,21 @@ function withI18nMiddleware(middleware: NextMiddleware) {
    }
 }
 
-function extractFirstTwoPathSegments(url: string) {
-   const parts = url.split('/')
-   const firstTwoParts = parts.slice(2, 3)
-   return '/' + firstTwoParts.join('/')
-}
-
 async function withAuthMiddleware(request: NextRequest) {
    const cookieValue = cookies().get('session')?.value as string
    const session = await decrypt(cookieValue)
-
    const language = request?.nextUrl?.pathname?.split('/')[1] || 'vi'
+   const pathNameSliceLanguage = request.nextUrl.pathname.slice(3)
+   const isPublicRoute = publicRoutes.includes(pathNameSliceLanguage)
+   const isProtectedRoute = protectedRoutes.includes(pathNameSliceLanguage)
+   const isAuthRoutes = authRoutes.includes(pathNameSliceLanguage)
 
-   // const isPublicRoute = publicRoutes.includes(
-   //    extractFirstTwoPathSegments(request.nextUrl.pathname)
-   // )
-
-   // if (!session && !isPublicRoute) {
-   //    return NextResponse.rewrite(new URL(`/${language}`, request.url))
-   // }
+   if (isProtectedRoute && !session) {
+      return NextResponse.redirect(new URL('/login', request.nextUrl))
+   }
+   if (isAuthRoutes && session) {
+      return NextResponse.redirect(new URL('/admin', request.nextUrl))
+   }
 
    const response = NextResponse.next()
    response.cookies.set('language', language)

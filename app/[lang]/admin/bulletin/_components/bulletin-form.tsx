@@ -38,10 +38,23 @@ interface Props {
 
 export const formSchema = z.object({
    title: z.string(),
-   description: z.string().optional(),
-   imageUrl: z.string().optional(),
+   description: z.string(),
+   imageUrl: z.string(),
    body: z.union([z.string(), z.null()]),
-   category: z.enum(['NEWS', 'EVENTS', 'ANNOUNCEMENTS', 'BULLETINS']),
+   category: z.enum([
+      'NEWS',
+      'EVENTS',
+      'ANNOUNCEMENTS',
+      'BULLETINS',
+      'COURSES',
+      'SEMINARS',
+      'PROJECTS',
+      'PRODUCTS',
+      'PUBLICATIONS',
+      'OTHERS',
+      'ACADEMIC',
+      'BUSSINESS'
+   ]),
    isNew: requiredStringOrBoolean(),
    isImportant: requiredStringOrBoolean()
 })
@@ -54,7 +67,9 @@ export default function BulletinForm({ bulletin, editable }: Props) {
       resolver: zodResolver(formSchema),
       defaultValues: bulletin || {
          isNew: true,
-         isImportant: true
+         isImportant: true,
+         body: '',
+         description: ''
       }
    })
 
@@ -123,18 +138,37 @@ export default function BulletinForm({ bulletin, editable }: Props) {
                               <SelectItem value='NEWS'>Tin tức</SelectItem>
                               <SelectItem value='ANNOUNCEMENTS'>Thông báo</SelectItem>
                               <SelectItem value='EVENTS'>Sự kiện sắp tới</SelectItem>
+                              <SelectItem value='COURSES'>Khóa học</SelectItem>
+                              <SelectItem value='SEMINARS'>Seminar</SelectItem>
+                              <SelectItem value='PROJECTS'>
+                                 Chương trình - Dự án
+                              </SelectItem>
+                              <SelectItem value='PRODUCTS'>
+                                 Sản phẩm NCKH - CGCN
+                              </SelectItem>
+                              <SelectItem value='PUBLICATIONS'>
+                                 Công bố khoa học
+                              </SelectItem>
+                              <SelectItem value='OTHERS'>
+                                 Sách - Tài liệu - Giáo trình
+                              </SelectItem>
+                              <SelectItem value='ACADEMIC'>Đối tác học thuật</SelectItem>
+                              <SelectItem value='BUSSINESS'>
+                                 Đối tác doanh nghiệp
+                              </SelectItem>
                            </SelectContent>
                         </Select>
                         <FormMessage />
                      </FormItem>
                   )}
                />
+
                <FormField
                   control={form.control}
                   name='imageUrl'
                   render={({ field }) => (
                      <FormItem>
-                        <FormLabel>Ảnh </FormLabel>
+                        <FormLabel>Ảnh</FormLabel>
                         <FormControl>
                            <Input
                               placeholder='Vui lòng nhập đường dẫn của ảnh'
@@ -144,6 +178,7 @@ export default function BulletinForm({ bulletin, editable }: Props) {
                      </FormItem>
                   )}
                />
+
                <FormField
                   control={form.control}
                   name='body'

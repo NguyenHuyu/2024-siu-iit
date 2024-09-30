@@ -1,14 +1,6 @@
 import { NavbarAdmin } from '@/components/layout/navbar-admin'
 import { Metadata } from 'next'
 
-export const metadata: Metadata = {
-   title: {
-      default: 'Admin',
-      template: '%s | Admin'
-   },
-   metadataBase: new URL('https://iit.siu.edu.vn')
-}
-
 export default function RootLayout({ children }: { children: React.ReactNode }) {
    return (
       <div className="bg-gray-1100 bg-[url('/grid.svg')] pb-36">

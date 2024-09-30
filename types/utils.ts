@@ -5,7 +5,15 @@ export enum Category {
    NEWS = "NEWS",
    EVENTS = "EVENTS",
    ANNOUNCEMENTS = "ANNOUNCEMENTS",
-   BULLETINS = "BULLETINS"
+   BULLETINS = "BULLETINS",
+   COURSES = "COURSES",
+   SEMINARS = "SEMINARS",
+   PROJECTS = "PROJECTS",
+   PRODUCTS = "PRODUCTS",
+   PUBLICATIONS = "PUBLICATIONS",
+   OTHERS = "OTHERS",
+   ACADEMIC = "ACADEMIC",
+   BUSSINESS = "BUSSINESS"
  }
 
 export type LayoutProps = {
@@ -19,6 +27,7 @@ export type PageProps = {
       slug: string
       lang: Locale
    }
+   searchParams: DefaultSearchParams
 }
 
 export interface DefaultSearchParams {

@@ -1,3 +1,5 @@
+import 'server-only'
+
 import { SignJWT, jwtVerify, JWTPayload } from 'jose'
 import { ResponseCookie } from 'next/dist/compiled/@edge-runtime/cookies'
 import { cookies } from 'next/headers'
