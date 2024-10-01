@@ -53,8 +53,6 @@ COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
 
-# Set the correct permission for prerender cache
-RUN chown -R nextjs:nodejs /app/.next
 
 USER nextjs
 
