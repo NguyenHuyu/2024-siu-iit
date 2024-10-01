@@ -36,6 +36,8 @@ export async function createBulletin(values: z.infer<typeof formSchema>) {
    }
 }
 
+
+
 export async function getBulletins(searchParams: DefaultSearchParams) {
    const { page = '1', size = '12', value, category } = searchParams || {}
 

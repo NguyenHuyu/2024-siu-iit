@@ -34,24 +34,39 @@ function withI18nMiddleware(middleware: NextMiddleware) {
    }
 }
 
+function removeTwoPathSegments(url: string) {
+   const parts = url.split('/')
+   const firstTwoParts = parts.slice(2, 3)
+   return '/' + firstTwoParts.join('/')
+}
+
 async function withAuthMiddleware(request: NextRequest) {
    const cookieValue = cookies().get('session')?.value as string
    const session = await decrypt(cookieValue)
    const language = request?.nextUrl?.pathname?.split('/')[1] || 'vi'
-   const pathNameSliceLanguage = request.nextUrl.pathname.slice(3)
-   const isPublicRoute = publicRoutes.includes(pathNameSliceLanguage)
-   const isProtectedRoute = protectedRoutes.includes(pathNameSliceLanguage)
-   const isAuthRoutes = authRoutes.includes(pathNameSliceLanguage)
+   const isAdminStartWith = request.nextUrl.pathname.startsWith(`/${language}/admin`)
+   const isLoginStartWith = request.nextUrl.pathname.startsWith(`/${language}/login`)
 
-   if (isProtectedRoute && !session) {
+   // const isPublicRoute = publicRoutes.includes(
+   //    removeTwoPathSegments(request.nextUrl.pathname)
+   // )
+   const isProtectedRoute = protectedRoutes.includes(
+      removeTwoPathSegments(request.nextUrl.pathname)
+   )
+   const isAuthRoutes = authRoutes.includes(
+      removeTwoPathSegments(request.nextUrl.pathname)
+   )
+
+   if (isAdminStartWith && !session && isProtectedRoute) {
       return NextResponse.redirect(new URL('/login', request.nextUrl))
    }
-   if (isAuthRoutes && session) {
+   if (isAuthRoutes && session && isLoginStartWith) {
       return NextResponse.redirect(new URL('/admin', request.nextUrl))
    }
 
    const response = NextResponse.next()
    response.cookies.set('language', language)
+
    return response
 }
 

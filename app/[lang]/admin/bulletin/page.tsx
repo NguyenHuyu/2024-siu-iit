@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { GripVertical, Share } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Link } from 'next-view-transitions'
-import { DefaultSearchParams, PageProps } from '@/types/utils'
+import { Category, DefaultSearchParams, PageProps } from '@/types/utils'
 import TablePattern from '@/components/table-pattern'
 import DropdownPattern from '@/components/dropdown-pattern'
 import { cn } from '@/lib/utils'
@@ -10,17 +10,35 @@ import { deleteBulletinById, getBulletins } from '@/actions/bulletin'
 import { Bulletin } from '@prisma/client'
 import Image from 'next/image'
 import { renderStatus } from '@/utils/utils'
+import PaginationSizePattern from '@/components/pattern/paging-size-pattern'
+import InputPattern from '@/components/pattern/input-search-pattern'
 
 interface Props extends PageProps {
    searchaParams: DefaultSearchParams
 }
 
-export default async function Page({ params, searchaParams }: Props) {
-   const bulletins = await getBulletins(searchaParams)
+export default async function Page({ params, searchParams }: Props) {
+   const bulletins = await getBulletins({
+      ...searchParams,
+      size: '10',
+      category: [
+         Category.NEWS,
+         Category.ANNOUNCEMENTS,
+         Category.EVENTS,
+         Category.COURSES,
+         Category.PUBLICATIONS,
+         Category.PRODUCTS,
+         Category.SEMINARS,
+         Category.PROJECTS,
+         Category.OTHERS,
+         Category.ACADEMIC,
+         Category.BUSSINESS
+      ]
+   })
 
    return (
       <div className='flex flex-col'>
-         <header className='sticky top-0 z-10 flex h-[57px] items-center gap-1 border-b bg-background px-4'>
+         <header className='sticky top-0 z-10 flex h-[57px] items-center gap-1 bg-background px-4'>
             <h1 className='text-xl font-semibold'>Quản lý bài viết</h1>
             <Link
                href={`/${params.lang}/admin/bulletin/create`}
@@ -32,6 +50,9 @@ export default async function Page({ params, searchaParams }: Props) {
                </Button>
             </Link>
          </header>
+         <Suspense>
+            <InputPattern listSelectOptions={[{ name: 'Tìm kiếm', value: 'search' }]} />
+         </Suspense>
          <TablePattern<Bulletin>
             data={bulletins.content}
             columns={[
@@ -82,6 +103,9 @@ export default async function Page({ params, searchaParams }: Props) {
                }
             ]}
          />
+         <div className='mx-auto container py-10'>
+            <PaginationSizePattern data={bulletins} />
+         </div>
       </div>
    )
 }

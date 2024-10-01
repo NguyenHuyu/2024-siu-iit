@@ -9,9 +9,10 @@ import NextImage from 'next/image'
 import DropdownPattern from '@/components/dropdown-pattern'
 import { deleteImageById, getImages } from '@/actions/image'
 import CopyText from '@/components/copy-text'
+import PaginationSizePattern from '@/components/pattern/paging-size-pattern'
 
-export default async function Page({ params }: PageProps) {
-   const images = await getImages()
+export default async function Page({ params, searchParams }: PageProps) {
+   const images = await getImages(searchParams)
 
    return (
       <div className='flex flex-col'>
@@ -28,12 +29,8 @@ export default async function Page({ params }: PageProps) {
             </Link>
          </header>
          <TablePattern<Image>
-            data={images}
+            data={images.content}
             columns={[
-               {
-                  title: 'Tên ảnh',
-                  render: (image) => <div className='max-w-28 truncate'>{image.name}</div>
-               },
                {
                   title: 'Tên ảnh',
                   render: (image) => (
@@ -49,7 +46,7 @@ export default async function Page({ params }: PageProps) {
                {
                   title: 'Đường dẫn',
                   render: (image) => (
-                     <div className='w-80 truncate'>
+                     <div className='w-96 truncate '>
                         <CopyText text={image.imageUrl} />
                      </div>
                   )
@@ -64,6 +61,9 @@ export default async function Page({ params }: PageProps) {
                }
             ]}
          />
+         <div className='mx-auto container py-10'>
+            <PaginationSizePattern data={images} />
+         </div>
       </div>
    )
 }

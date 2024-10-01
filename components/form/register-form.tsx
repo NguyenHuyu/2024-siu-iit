@@ -16,7 +16,7 @@ export function SignupForm() {
    const [state, action] = useFormState(signup, undefined)
 
    return (
-      <form action={action} className='space-y-4'>
+      <form action={action} className='space-y-4 p-2'>
          <div className='space-y-2'>
             <Label htmlFor='name'>Tên tài khoản</Label>
             <Input id='name' name='name' placeholder='' />

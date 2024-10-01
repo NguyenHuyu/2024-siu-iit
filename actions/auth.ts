@@ -7,7 +7,10 @@ import {
    LoginFormState,
    LoginFormSchema
 } from '@/schema/definitions'
+import { Status } from '@reflet/http'
 import bcrypt from 'bcrypt'
+import { revalidatePath } from 'next/cache'
+import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
 export async function signup(state: FormState, formData: FormData) {
@@ -96,5 +99,37 @@ export async function logout() {
 
    return {
       message: 'Logout successful'
+   }
+}
+
+export async function getUser() {
+   try {
+      const users = await prisma.user.findMany()
+      return users
+   } catch (error) {
+      return []
+   }
+}
+
+export async function deleteUser(id: string) {
+   const language = cookies().get('language')?.value as string
+
+   try {
+      await prisma.user.delete({
+         where: {
+            id
+         }
+      })
+      revalidatePath(`/${language}/admin/register`)
+
+      return {
+         status: Status.Ok,
+         message: 'Xóa thành công'
+      }
+   } catch (error) {
+      return {
+         status: Status.InternalServerError,
+         message: 'Có lỗi xảy ra, ở hệ thống!'
+      }
    }
 }

@@ -1,5 +1,7 @@
 'use server'
 import prisma from '@/lib/database'
+import { DefaultSearchParams } from '@/types/utils'
+import { Image } from '@prisma/client'
 import { Status } from '@reflet/http'
 import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
@@ -54,11 +56,40 @@ export async function createImage(formData: FormData) {
    }
 }
 
-export async function getImages() {
+export async function getImages(searchParams: DefaultSearchParams) {
+   const { page = '1', size = '10' } = searchParams || {}
+
    try {
-      return await prisma.image.findMany()
+      const skip = (parseInt(page) - 1) * parseInt(size)
+      const take = parseInt(size)
+
+      const data = await prisma.image.findMany({
+         skip: skip,
+         take: take,
+         orderBy: {
+            createdAt: 'desc' // Sắp xếp theo thời gian tạo mới nhất
+         }
+      })
+
+      const totalRecords = await prisma.image.count()
+      const totalPages = Math.ceil(totalRecords / take)
+
+      return {
+         content: data as Image[],
+         page: parseInt(page),
+         totalPages: totalPages,
+         total: totalRecords,
+         size: take
+      }
    } catch (error) {
-      return []
+      console.error('Error fetching image:', error)
+      return {
+         content: [],
+         total: 0,
+         page: 0,
+         size: 0,
+         totalPages: 0
+      }
    }
 }
 

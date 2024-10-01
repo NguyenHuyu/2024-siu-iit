@@ -22,7 +22,7 @@ export function NavbarAdmin() {
                onClick={close}
             >
                <h3 className='font-semibold tracking-wide text-gray-400 group-hover:text-gray-50'>
-                  DASHBOARD
+                  Trang chủ
                </h3>
             </Link>
          </div>

@@ -13,7 +13,10 @@ export default function CopyText({ text }: { text: string }) {
       })
    }
    return (
-      <button onClick={copyToClipboard} className='inline-flex focus:outline-0'>
+      <button
+         onClick={copyToClipboard}
+         className='inline-flex focus:outline-0 hover:underline'
+      >
          {text}
          <Copy />
       </button>

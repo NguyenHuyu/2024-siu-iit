@@ -71,7 +71,7 @@ export default function InputPattern({ listSelectOptions }: InputPatternProps) {
                {text && (
                   <X
                      size={18}
-                     className='absolute top-2 right-2 cursor-pointer'
+                     className='absolute top-4 right-4 cursor-pointer'
                      onClick={() => {
                         setText('')
                         setSelectedOption(filterParams)

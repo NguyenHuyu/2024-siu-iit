@@ -19,11 +19,15 @@ export const demos: { name: string; items: Item[] }[] = [
       ]
    },
    {
-      name: 'Quản lý Bài viết',
+      name: 'Bài viết',
       items: [
          {
-            name: 'Bài viết',
+            name: 'Quản lý bài viết',
             slug: 'vi/admin/bulletin'
+         },
+         {
+            name: 'Quản lý thông tin liên hệ',
+            slug: 'vi/admin/contact'
          }
       ]
    },
