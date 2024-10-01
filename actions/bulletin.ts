@@ -37,7 +37,7 @@ export async function createBulletin(values: z.infer<typeof formSchema>) {
 }
 
 export async function getBulletins(searchParams: DefaultSearchParams) {
-   const { filter, page = '1', size = '10', value, category } = searchParams || {}
+   const { page = '1', size = '12', value, category } = searchParams || {}
 
    const skip = (parseInt(page) - 1) * parseInt(size)
    const take = parseInt(size)
@@ -45,16 +45,25 @@ export async function getBulletins(searchParams: DefaultSearchParams) {
    try {
       const whereClause: Record<string, any> = {}
 
-      if (filter && value) {
-         whereClause[filter] = {
-            contains: value
+      // Tìm kiếm theo giá trị value trên nhiều trường
+      if (value) {
+         const lowerValue = value.toLowerCase()
+         whereClause.OR = [
+            { title: { contains: lowerValue, mode: 'insensitive' } },
+            { description: { contains: lowerValue, mode: 'insensitive' } },
+            { imageUrl: { contains: lowerValue, mode: 'insensitive' } },
+            { body: { contains: lowerValue, mode: 'insensitive' } }
+         ]
+      }
+
+      // Lọc theo category nếu là mảng
+      if (Array.isArray(category) && category.length > 0) {
+         whereClause.category = {
+            in: category // Prisma 'in' để lọc theo mảng category
          }
       }
 
-      if (category) {
-         whereClause.category = category
-      }
-
+      // Thực hiện truy vấn
       const data = await prisma.bulletin.findMany({
          where: Object.keys(whereClause).length ? whereClause : undefined,
          skip: skip,
@@ -64,6 +73,7 @@ export async function getBulletins(searchParams: DefaultSearchParams) {
          }
       })
 
+      // Tính tổng số bản ghi
       const totalRecords = await prisma.bulletin.count({
          where: Object.keys(whereClause).length ? whereClause : undefined
       })

@@ -10,6 +10,7 @@ import { useState } from 'react'
 import Image from 'next/image'
 import SIU from '@/public/assets/logosiu.png'
 import IIT from '@/public/assets/logoiit.png'
+import LocaleSwitcher from '../swicher-locale'
 
 export default function MobileNav({ header }: { header: any }) {
    const [isOpen, setIsOpen] = useState(false)
@@ -111,22 +112,22 @@ export default function MobileNav({ header }: { header: any }) {
    ]
 
    return (
-      <div className='md:hidden fixed top-0 z-50 flex w-full flex-col border-b border-gray-800 bg-gradient-to-r from-[#8dbffd] via-gray-300 to-[#8dbffd]  w-full fixed z-50 lg:bottom-0 lg:z-auto'>
-         <div className='flex h-16 items-center px-4 py-4 lg:h-auto'>
+      <div className='md:hidden  top-0  flex w-full flex-col border-b border-gray-800 bg-gradient-to-r from-[#8dbffd] via-gray-300 to-[#8dbffd]  fixed z-50 lg:bottom-0 lg:z-auto'>
+         <div className='flex h-20 items-center px-4 py-4 lg:h-auto'>
             <Link href={`/${lang}`}>
                <div className='flex items-center gap-1 md:gap-2'>
                   <Image
                      src={SIU}
                      width={10000}
                      height={10000}
-                     className='w-14'
+                     className='w-[70px]'
                      alt='Viện công nghệ sáng tạo IIT - Trường Đại học Quốc tế Sài Gòn SIU'
                   />
                   <Image
                      src={IIT}
                      width={10000}
                      height={10000}
-                     className='w-28'
+                     className='w-32'
                      alt='Viện công nghệ sáng tạo IIT - Trường Đại học Quốc tế Sài Gòn SIU'
                   />
                </div>
@@ -134,7 +135,7 @@ export default function MobileNav({ header }: { header: any }) {
          </div>
          <button
             type='button'
-            className='group absolute right-0 top-1 flex h-14 items-center gap-x-2 px-4 lg:hidden'
+            className='group absolute right-0 top-3 flex h-14 items-center gap-x-2 px-4 lg:hidden'
             onClick={() => setIsOpen(!isOpen)}
          >
             {isOpen ? (
@@ -157,6 +158,7 @@ export default function MobileNav({ header }: { header: any }) {
                   ))}
                </div>
             </nav>
+            <LocaleSwitcher />
          </ScrollArea>
       </div>
    )

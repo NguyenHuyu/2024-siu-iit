@@ -35,7 +35,7 @@ export interface DefaultSearchParams {
    page?: string
    size?: string
    value?: string
-   category: Category;
+   category: Category | string[]
 }
 
 export interface ResponseData {

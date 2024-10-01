@@ -138,7 +138,7 @@ export default async function Header({ lang }: { lang: Locale }) {
    ]
 
    return (
-      <header className='pb-16 md:pb-12'>
+      <header className='pb-20 md:pb-12'>
          <main className='hidden md:block bg-gradient-to-r from-[#8dbffd] via-gray-300 to-[#8dbffd]  w-full fixed z-50 px-6'>
             <div className='mx-auto flex justify-between items-center py-3 md:p-1  font-semibold'>
                <div className='flex items-center md:gap-2'>

@@ -4,7 +4,7 @@ import { Bulletin } from '@prisma/client'
 
 export function UpcomingEvent({ events }: { events: Bulletin[] }) {
    return (
-      <BentoGrid className='w-full mx-auto md:auto-rows-[22rem] py-3'>
+      <BentoGrid className='w-full mx-auto py-3'>
          {events.map((item, i) => (
             <BentoGridItem
                key={i}
