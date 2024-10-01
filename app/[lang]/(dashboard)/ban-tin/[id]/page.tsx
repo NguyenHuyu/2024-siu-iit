@@ -8,6 +8,34 @@ import {
    RecommendedProducts,
    RecommendedProductsSkeleton
 } from '@/components/recommended'
+import { Metadata } from 'next'
+import { customSlugify } from '@/utils/slugify'
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+   const news = await getBulletinById(getUrlParams(params.id))
+
+   if (!news) return notFound()
+
+   return {
+      title: news?.title,
+      description: news?.description,
+      openGraph: {
+         title: news?.title,
+         description: news?.title,
+         type: 'website',
+         locale: 'vi_VN',
+         url: `https://iit.siu.edu.vn/${params.lang}/${customSlugify(news.title)}__${news.id}.html`,
+         images: [
+            {
+               url: news.imageUrl,
+               width: 800,
+               height: 600,
+               alt: news.title
+            }
+         ]
+      }
+   }
+}
 
 export default async function Page({ params }: PageProps) {
    const bulletin = await getBulletinById(getUrlParams(params.id))

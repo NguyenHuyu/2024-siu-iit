@@ -1,7 +1,7 @@
 'use server'
 import { formSchema } from '@/app/[lang]/admin/bulletin/_components/bulletin-form'
 import prisma from '@/lib/database'
-import { DefaultSearchParams } from '@/types/utils'
+import { Category, DefaultSearchParams } from '@/types/utils'
 import { Bulletin } from '@prisma/client'
 import { Status } from '@reflet/http'
 import { revalidatePath } from 'next/cache'
@@ -164,18 +164,21 @@ export async function deleteBulletinById(id: string) {
    }
 }
 
-export async function getLatestBulletins(excludeId: string) {
+export async function getLatestBulletins(excludeId: string, category: Category[]) {
    try {
       const data = await prisma.bulletin.findMany({
          where: {
             id: {
                not: excludeId
+            },
+            category: {
+               in: category
             }
          },
          orderBy: {
             createdAt: 'desc'
          },
-         take: 10
+         take: 12
       })
 
       return data as Bulletin[]

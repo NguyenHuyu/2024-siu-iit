@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils'
+import { Link } from 'next-view-transitions'
 import Image from 'next/image'
 
 export const BentoGrid = ({
@@ -23,12 +24,12 @@ export const BentoGrid = ({
 export const BentoGridItem = ({
    title,
    description,
-   header,
+   url,
    image
 }: {
    title: string
    description?: string | React.ReactNode
-   header?: React.ReactNode
+   url: string
    image: string
 }) => {
    return (
@@ -46,7 +47,9 @@ export const BentoGridItem = ({
                className='flex-none rounded-md bg-slate-100 w-full object-cover'
             />
             <div className='p-2'>
-               <p className='line-clamp-1 mt-2 font-bold'>{title}</p>
+               <Link href={url}>
+                  <p className='line-clamp-1 font-bold'>{title}</p>
+               </Link>
                <p className='font-normal text-neutral-600 text-base line-clamp-2 '>
                   {description}
                </p>

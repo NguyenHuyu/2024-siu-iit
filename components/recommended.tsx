@@ -1,5 +1,6 @@
 import { getLatestBulletins } from '@/actions/bulletin'
 import { Locale } from '@/lib/i18n.config'
+import { Category } from '@/types/utils'
 import { customSlugify } from '@/utils/slugify'
 import { renderStatus } from '@/utils/utils'
 import { Link } from 'next-view-transitions'
@@ -14,7 +15,11 @@ export async function RecommendedProducts({
    }
    id: string
 }) {
-   const relatests = await getLatestBulletins(id)
+   const relatests = await getLatestBulletins(id, [
+      Category.NEWS,
+      Category.ANNOUNCEMENTS,
+      Category.EVENTS
+   ])
 
    return (
       <div className='space-y-6 py-8 container mx-auto'>

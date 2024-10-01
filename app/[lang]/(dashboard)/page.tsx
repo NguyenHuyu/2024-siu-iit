@@ -15,6 +15,7 @@ import { getBulletins } from '@/actions/bulletin'
 import { customSlugify } from '@/utils/slugify'
 import { Button } from '@/components/ui/button'
 import { ExternalLinkIcon } from 'lucide-react'
+import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
 
 interface Props extends PageProps {
    searchParams: DefaultSearchParams
@@ -183,6 +184,18 @@ export default async function page({ params }: Props) {
                   </CardTitle>
                </CardHeader>
                <UpcomingEvent events={events.content} />
+
+               <BentoGrid className='w-full mx-auto py-3'>
+                  {events.content.map((item, i) => (
+                     <BentoGridItem
+                        key={i}
+                        title={item.title}
+                        description={item.description}
+                        url={`/${params.lang}/ban-tin/${customSlugify(item.title)}__${item.id}.html`}
+                        image={item.imageUrl}
+                     />
+                  ))}
+               </BentoGrid>
             </Card>
          </div>
       </>
