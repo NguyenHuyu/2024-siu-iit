@@ -8,7 +8,18 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
    title: 'IIT - Viện Công nghệ & Sáng tạo - SIU',
-   description: 'IIT - Viện công nghệ & sáng tạo - SIU'
+   description: 'IIT - Viện công nghệ & sáng tạo - SIU',
+   metadataBase: new URL('https://iit.siu.edu.vn'),
+   alternates: {
+      canonical: '/',
+      languages: {
+         'vi-VN': '/vi',
+         'en-US': '/en'
+      }
+   },
+   openGraph: {
+      images: '/opengraph-image.jpg'
+   }
 }
 
 export default function RootLayout({

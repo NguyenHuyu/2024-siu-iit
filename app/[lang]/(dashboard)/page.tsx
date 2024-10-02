@@ -17,6 +17,10 @@ import { Button } from '@/components/ui/button'
 import { ExternalLinkIcon } from 'lucide-react'
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
 
+export const metadata = {
+   title: 'IIT - Trang chủ'
+}
+
 interface Props extends PageProps {
    searchParams: DefaultSearchParams
 }

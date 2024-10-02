@@ -20,7 +20,7 @@ export default function Center({ dataCenter }: CenterProps) {
    return (
       <div className='w-full'>
          <LampContainer>
-            <motion.h1
+            <motion.h2
                initial={{ opacity: 0.7, y: 30 }}
                whileInView={{ opacity: 1, y: 10 }}
                transition={{
@@ -31,7 +31,7 @@ export default function Center({ dataCenter }: CenterProps) {
                className='bg-gradient-to-br from-black to-slate-500 py-4 bg-clip-text text-center text-2xl md:text-4xl font-medium tracking-tight text-transparent lg:text-6xl'
             >
                CÁC ĐƠN VỊ TRỰC THUỘC
-            </motion.h1>
+            </motion.h2>
          </LampContainer>
          <ScrollArea className='w-full md:w-full whitespace-nowrap p-2 md:p-4'>
             <div className='flex justify-center items-start md:items-center w-full md:w-80 lg:w-[30rem] space-x-4 md:p-4 mx-auto'>
