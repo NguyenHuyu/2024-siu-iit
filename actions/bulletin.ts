@@ -36,13 +36,11 @@ export async function createBulletin(values: z.infer<typeof formSchema>) {
    }
 }
 
-
-
 export async function getBulletins(searchParams: DefaultSearchParams) {
-   const { page = '1', size = '12', value, category } = searchParams || {}
+   const { page = '1', size, value, category } = searchParams || {}
 
-   const skip = (parseInt(page) - 1) * parseInt(size)
-   const take = parseInt(size)
+   const skip = (parseInt(page) - 1) * parseInt(size || '12')
+   const take = parseInt(size || '12')
 
    try {
       const whereClause: Record<string, any> = {}

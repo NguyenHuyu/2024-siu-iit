@@ -48,7 +48,7 @@ export default async function Page({ params }: PageProps) {
          <Suspense fallback={<RecommendedProductsSkeleton />}>
             <RecommendedProducts
                id={getUrlParams(params.id as string)}
-               params={`${params.lang}/tin-tuc`}
+               params={`${params.lang}/doi-tac-doanh-nghiep`}
             />
          </Suspense>
       </Fragment>

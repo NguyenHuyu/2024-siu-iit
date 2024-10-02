@@ -10,9 +10,7 @@ export async function RecommendedProducts({
    id,
    params
 }: {
-   params: {
-      lang: Locale
-   }
+   params: string
    id: string
 }) {
    const relatests = await getLatestBulletins(id, [
@@ -22,13 +20,13 @@ export async function RecommendedProducts({
    ])
 
    return (
-      <div className='space-y-6 py-8 container mx-auto'>
+      <div className='space-y-6 py-8 container mx-auto max-w-6xl'>
          <div className='text-lg font-medium text-black'>Bài viết khác</div>
          <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6'>
             {relatests.map((product) => (
                <Link
                   key={product.id}
-                  href={`/${params.lang}/ban-tin/${customSlugify(product.title)}__${product.id}.html`}
+                  href={`/${params}/${customSlugify(product.title)}__${product.id}.html`}
                   className='group block h-40 w-40 md:h-full md:w-full m-2'
                >
                   <div className='md:space-y-2'>
