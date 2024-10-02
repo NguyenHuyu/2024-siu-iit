@@ -64,13 +64,13 @@ export function NavbarAdmin() {
             <Button
                variant='outline'
                onClick={() => logout()}
-               className='w-full my-3 text-xs font-semibold uppercase tracking-wider text-black'
+               className='w-full block md:hidden my-3 text-xs font-semibold uppercase tracking-wider text-black'
             >
                Đăng xuất
             </Button>
          </ScrollArea>
 
-         <div className='absolute hidden md:block bottom-0 text-white w-full p-2'>
+         <div className='absolute hidden md:block  bottom-0 text-white w-full p-2'>
             <Button variant='ghost' onClick={() => logout()} className='w-full'>
                Đăng xuất
             </Button>
