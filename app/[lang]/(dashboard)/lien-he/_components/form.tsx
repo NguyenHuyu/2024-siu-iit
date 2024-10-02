@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent } from '@/components/ui/card'
 import { Label } from '@/components/ui/label'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -49,33 +49,15 @@ export default function ContactReportForm({
             <form onSubmit={handleSubmit} className='grid gap-4'>
                <div className='grid gap-2'>
                   <Label htmlFor='name'>{name}</Label>
-                  <Input
-                     id='name'
-                     type='name'
-                     name='name'
-                     placeholder='Nguyen Van A'
-                     required
-                  />
+                  <Input id='name' type='name' name='name' required />
                </div>
                <div className='grid gap-2'>
                   <Label htmlFor='email'>{email}</Label>
-                  <Input
-                     id='email'
-                     type='email'
-                     name='email'
-                     placeholder='m@example.com'
-                     required
-                  />
+                  <Input id='email' type='email' name='email' required />
                </div>
                <div className='grid gap-2'>
                   <Label htmlFor='phone'>{phone}</Label>
-                  <Input
-                     id='phone'
-                     type='phone'
-                     name='phone'
-                     placeholder='09xxxxxxxx'
-                     required
-                  />
+                  <Input id='phone' type='phone' name='phone' required />
                </div>
                <div className='grid gap-2'>
                   <Label htmlFor='body'>{body}</Label>
