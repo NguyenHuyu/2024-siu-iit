@@ -37,7 +37,10 @@ const nextConfig = {
       ]
    },
    experimental: {
-      trustHost: true
+      trustHost: true,
+      serverActions: {
+         allowedOrigins: ['iit.siu.edu.vn', 'localhost:8010']
+      }
    },
    typescript: {
       ignoreBuildErrors: true
