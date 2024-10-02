@@ -14,7 +14,7 @@ export default async function Footer({ lang }: { lang: Locale }) {
    const { footer } = await getDictionary(lang)
 
    return (
-      <div className='flex items-end w-full mt-10 pt-4 md:h-40 bg-gradient-to-r from-[#8dbffd] via-gray-300 to-[#8dbffd] md:mt-28'>
+      <div className='flex items-end w-full mt-10 pt-4 md:h-48 bg-gradient-to-r from-[#8dbffd] via-gray-300 to-[#8dbffd] md:mt-28'>
          <footer className='w-full body-font mx-auto max-w-6xl'>
             <div className='container flex flex-col justify-between flex-wrap px-5 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap'>
                <div className='flex-shrink-0 w-80 mx-auto text-center md:mx-0 md:text-left'>
