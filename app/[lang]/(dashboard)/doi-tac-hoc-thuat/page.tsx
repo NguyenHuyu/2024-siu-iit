@@ -69,10 +69,10 @@ export default async function Page({ params, searchParams }: PageProps) {
 
    return (
       <div className=''>
-         <div className='md:h-96 w-full rounded-md flex md:items-center md:justify-center bg-black/[0.7] antialiased bg-grid-white/[0.02] relative overflow-hidden'>
+         <div className='md:h-96 w-full rounded-md flex md:items-center md:justify-center bg-blue-200/20 antialiased relative overflow-hidden'>
             <Spotlight className='-top-40 left-0 md:left-60 md:-top-20' fill='white' />
             <div className='p-4 max-w-7xl mx-auto relative z-10 w-full md:pt-20'>
-               <h1 className='py-4 text-4xl md:text-7xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-50 to-neutral-200 bg-opacity-50 uppercase'>
+               <h1 className='py-4 text-4xl md:text-7xl font-bold text-center text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-blue-600 via-30% to-green-600  uppercase'>
                   {header.academic_partners}
                </h1>
             </div>
