@@ -25,17 +25,19 @@ export const BentoGridItem = ({
    title,
    description,
    url,
-   image
+   image,
+   createdAt
 }: {
    title: string
    description?: string | React.ReactNode
    url: string
    image: string
+   createdAt?: Date
 }) => {
    return (
       <div
          className={cn(
-            'md:w-72 md:h-72 rounded-xl border transition duration-200 space-y-2'
+            'md:w-72 md:h-[19rem] rounded-xl border transition duration-200 space-y-2'
          )}
       >
          <div className='transition duration-200 text-justify'>
@@ -53,6 +55,11 @@ export const BentoGridItem = ({
                <p className='font-normal text-neutral-600 text-base line-clamp-2 '>
                   {description}
                </p>
+               {createdAt && (
+                  <p className='mx-auto font-normal text-muted-foreground  text-sm '>
+                     {createdAt.toLocaleDateString('vi-VN')}
+                  </p>
+               )}
             </div>
          </div>
       </div>

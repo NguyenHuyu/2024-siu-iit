@@ -9,7 +9,7 @@ import CEBC from '@/public/assets/cebc.png'
 import Banner from './_components/banner'
 import Center from './_components/center'
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { Category, DefaultSearchParams, PageProps } from '@/types/utils'
+import { Category, PageProps } from '@/types/utils'
 import { UpcomingEvent } from './_components/upcoming-events'
 import { getBulletins } from '@/actions/bulletin'
 import { customSlugify } from '@/utils/slugify'
@@ -18,10 +18,12 @@ import { ExternalLinkIcon } from 'lucide-react'
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
 
 export const metadata = {
-   title: 'IIT - Trang chủ'
+   title: 'IIT - Trang chủ',
+   description: 'IIT - Viện công nghệ & sáng tạo - SIU',
+   metadataBase: new URL('https://iit.siu.edu.vn')
 }
 
-export default async function page({ params, searchParams }: PageProps) {
+export default async function page({ params }: PageProps) {
    const { page } = await getDictionary(params.lang)
 
    const news = await getBulletins({
@@ -105,7 +107,7 @@ export default async function page({ params, searchParams }: PageProps) {
                                     <div>
                                        <dt className='sr-only'>Date</dt>
                                        <dd className='px-1.5 ring-1 ring-slate-200 rounded'>
-                                          {movie?.createdAt?.toLocaleDateString()}
+                                          {movie?.createdAt?.toLocaleDateString('vi-VN')}
                                        </dd>
                                     </div>
 
@@ -169,7 +171,7 @@ export default async function page({ params, searchParams }: PageProps) {
                                  </div>
 
                                  <p className='text-sm text-slate-700'>
-                                    {movie.createdAt.toLocaleDateString()}
+                                    {movie.createdAt.toLocaleDateString('vi-VN')}
                                  </p>
                               </div>
                            </div>
@@ -197,6 +199,7 @@ export default async function page({ params, searchParams }: PageProps) {
                         description={item.description}
                         url={`/${params.lang}/ban-tin/${customSlugify(item.title)}__${item.id}.html`}
                         image={item.imageUrl}
+                        createdAt={item.createdAt}
                      />
                   ))}
                </BentoGrid>
