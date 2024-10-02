@@ -27,6 +27,7 @@ interface Props {
 
 const Editor = ({ body, onChange, editable }: Props) => {
    const editor = useEditor({
+      immediatelyRender: editable,
       editable,
       extensions: [
          StarterKit,
@@ -56,7 +57,7 @@ const Editor = ({ body, onChange, editable }: Props) => {
          Image.configure({
             inline: true,
             HTMLAttributes: {
-               class: 'mx-auto w-full h-auto py-2'
+               class: 'mx-auto w-full h-auto py-2 rounded-md'
             }
          }),
          HardBreak,

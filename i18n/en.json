@@ -37,9 +37,12 @@
 			"title_center_entrepreneurship": "Center for Entrepreneurship and Business Cooperation",
 			"title_center_leaning":"Center for Experiential Learning & Soft Skills",
 			"read_more": "Read more",
+			"bulletin": "Bulletins",
 			"news": "News",
 			"notify": "Announcements",
-			"upcoming":"Upcoming Events"
+			"upcoming":"Upcoming Events",
+			"search":"Tìm kiếm"
+
 		},
 		"contact": {
 			"title": "Contact us",

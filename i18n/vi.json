@@ -41,10 +41,11 @@
 			"title_center_leaning":"Trung tâm trải nghiệm & Phát triển kỹ năng mềm",
 
 			"read_more": "Xem thêm",
-
+            "bulletin": "Bản tin",
 			"news": "Tin tức",
 			"notify": "Thông báo",
-			"upcoming":"Sự kiện sắp tới"
+			"upcoming":"Sự kiện sắp tới",
+            "search":"Tìm kiếm"
 		},
 		"contact": {
 			"title": "Liên hệ với chúng tôi",

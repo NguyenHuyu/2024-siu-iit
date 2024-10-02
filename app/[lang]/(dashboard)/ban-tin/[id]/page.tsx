@@ -49,7 +49,7 @@ export default async function Page({ params }: PageProps) {
             <RecommendedProducts
                lists={[Category.NEWS, Category.ANNOUNCEMENTS, Category.EVENTS]}
                id={getUrlParams(params.id as string)}
-               params={`${params.lang}/tin-tuc`}
+               params={`${params.lang}/ban-tin`}
             />
          </Suspense>
       </Fragment>

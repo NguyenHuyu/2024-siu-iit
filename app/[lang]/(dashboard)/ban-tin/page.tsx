@@ -7,12 +7,14 @@ import { Link } from 'next-view-transitions'
 import { customSlugify } from '@/utils/slugify'
 import PaginationSizePattern from '@/components/pattern/paging-size-pattern'
 import InputPattern from '@/components/pattern/input-search-pattern'
+import { getDictionary } from '@/lib/dictionary'
 
 interface Props extends PageProps {
    searchParams: DefaultSearchParams
 }
 
 export default async function Page({ searchParams, params }: Props) {
+   const { page } = await getDictionary(params.lang)
    const bulletins = await getBulletins({
       ...searchParams,
       category: [Category.NEWS, Category.ANNOUNCEMENTS, Category.EVENTS]
@@ -23,11 +25,11 @@ export default async function Page({ searchParams, params }: Props) {
          <BackgroundBeamsWithCollision>
             <h2 className='text-2xl relative z-20 md:text-4xl lg:text-7xl font-bold text-center text-black dark:text-white font-sans tracking-tight'>
                <div className='relative top-[50%] mx-auto inline-block w-max'>
-                  <div className='absolute left-0 top-[5px] bg-clip-text bg-no-repeat text-transparent bg-gradient-to-r py-4 from-purple-500 via-violet-500 to-pink-500 [text-shadow:0_0_rgba(0,0,0,0.1)]'>
-                     <span className=''> BẢN TIN</span>
+                  <div className='absolute left-0 top-[5px] bg-clip-text bg-no-repeat text-transparent bg-gradient-to-r py-4 from-purple-500 via-violet-500 to-pink-500 [text-shadow:0_0_rgba(0,0,0,0.1)] uppercase'>
+                     <span className=''>{page.home_page.bulletin}</span>
                   </div>
-                  <div className='relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 py-4'>
-                     <span className=''> BẢN TIN</span>
+                  <div className='relative bg-clip-text text-transparent bg-no-repeat bg-gradient-to-r from-purple-500 via-violet-500 to-pink-500 py-4 uppercase'>
+                     <span className=''>{page.home_page.bulletin}</span>
                   </div>
                </div>
             </h2>
@@ -61,13 +63,13 @@ export default async function Page({ searchParams, params }: Props) {
                         </h2>
                         <div className='flex flex-row justify-between items-center mt-10'>
                            <p className='text-sm text-gray-500 '>
-                              {bulletin.createdAt.toLocaleDateString()}
+                              {bulletin.createdAt.toLocaleDateString('vi-VN')}
                            </p>
                            <Link
                               href={`/${params.lang}/ban-tin/${customSlugify(bulletin.title)}__${bulletin.id}.html`}
                               className='relative z-10 px-6 py-2 bg-black text-white font-bold rounded-xl block text-xs'
                            >
-                              Xem thêm
+                              {page.home_page.read_more}
                            </Link>
                         </div>
                      </div>

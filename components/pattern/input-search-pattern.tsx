@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
+import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useDebounce } from 'use-debounce'
 import { Input } from '@/components/ui/input'
 import { Menu, X } from 'lucide-react'
@@ -22,7 +22,7 @@ export default function InputPattern({ listSelectOptions }: InputPatternProps) {
    // Input search
    const router = useRouter()
    const pathName = usePathname()
-
+   const params = useParams()
    const [text, setText] = useState<string | undefined>(valueParams || undefined)
    const [query] = useDebounce(text, 400)
 
@@ -63,7 +63,7 @@ export default function InputPattern({ listSelectOptions }: InputPatternProps) {
          <div className='flex flex-col md:flex md:flex-row justify-between gap-3 items-center md:items-center'>
             <div className='relative'>
                <Input
-                  placeholder={inputName}
+                  placeholder={params.lang === 'vi' ? 'Tìm kiếm' : 'Search'}
                   value={text}
                   onChange={handleChange}
                   className='pl-10 pr-8 h-12 w-[150px] lg:w-[350px] border-black shadow-sm'
