@@ -7,7 +7,7 @@ import ClientProvider from '@/provider/client-provider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-   title: 'IIT',
+   title: 'IIT - Viện Công nghệ & Sáng tạo - SIU',
    description: 'IIT - Viện công nghệ & sáng tạo - SIU'
 }
 

@@ -1,5 +1,4 @@
 import { NavbarAdmin } from '@/components/layout/navbar-admin'
-import { Metadata } from 'next'
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
    return (
