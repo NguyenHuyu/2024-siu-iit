@@ -36,13 +36,11 @@ const nextConfig = {
          }
       ]
    },
+   experimental: {
+      trustHost: true
+   },
    typescript: {
       ignoreBuildErrors: true
-   },
-   experimental: {
-      serverActions: {
-         allowedOrigins: ['https://iit.siu.edu.vm']
-      }
    },
    transpilePackages: ['lucide-react', 'react-icons'],
    reactStrictMode: false,
