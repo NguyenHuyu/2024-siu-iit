@@ -38,7 +38,7 @@ export const BentoGridItem = ({
       <Link
          href={url}
          className={cn(
-            'rounded-xl group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-2 dark:bg-black dark:border-white/[0.2] bg-white border justify-between flex flex-col space-y-4',
+            'rounded-xl transition duration-200 shadow-input dark:shadow-none p-2 dark:bg-black  bg-white border justify-between flex flex-col space-y-4',
             className
          )}
       >

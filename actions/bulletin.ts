@@ -178,7 +178,7 @@ export async function getLatestBulletins(excludeId: string, category: Category[]
          orderBy: {
             createdAt: 'desc'
          },
-         take: 12
+         take: 8
       })
 
       return data as Bulletin[]

@@ -91,11 +91,10 @@ export default function MobileNav({ header }: { header: any }) {
          itemss: []
       },
       {
+         name: header.contact,
          href: `/${lang}/lien-he`,
-         text: header.contact,
-         pointer: 'cursor-pointer',
          ghv: '',
-         items: []
+         itemss: []
       },
       {
          name: header.academic_partners,
@@ -158,7 +157,9 @@ export default function MobileNav({ header }: { header: any }) {
                   ))}
                </div>
             </nav>
-            <LocaleSwitcher />
+            <div className='mx-auto w-full'>
+               <LocaleSwitcher />
+            </div>
          </ScrollArea>
       </div>
    )

@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
          description: news?.title,
          type: 'website',
          locale: 'vi_VN',
-         url: `https://iit.siu.edu.vn/${params.lang}/doi-tac-hoc-thuat/${customSlugify(news.title)}__${news.id}.html`,
+         url: `https://iit.siu.edu.vn/${params.lang}/khoa-hoc/${customSlugify(news.title)}__${news.id}.html`,
          images: [
             {
                url: news.imageUrl,
@@ -47,9 +47,9 @@ export default async function Page({ params }: PageProps) {
          <RenderItem bulletin={bulletin} />
          <Suspense fallback={<RecommendedProductsSkeleton />}>
             <RecommendedProducts
-               lists={[Category.ACADEMIC]}
                id={getUrlParams(params.id as string)}
-               params={`${params.lang}/doi-tac-hoc-thuat`}
+               params={`${params.lang}/khoa-hoc`}
+               lists={[Category.COURSES]}
             />
          </Suspense>
       </Fragment>

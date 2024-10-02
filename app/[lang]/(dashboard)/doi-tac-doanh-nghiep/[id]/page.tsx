@@ -1,7 +1,7 @@
 import React, { Fragment, Suspense } from 'react'
 import { getBulletinById } from '@/actions/bulletin'
 import RenderItem from '@/components/render-item'
-import { PageProps } from '@/types/utils'
+import { Category, PageProps } from '@/types/utils'
 import { getUrlParams } from '@/utils/utils'
 import { notFound } from 'next/navigation'
 import {
@@ -47,6 +47,7 @@ export default async function Page({ params }: PageProps) {
          <RenderItem bulletin={bulletin} />
          <Suspense fallback={<RecommendedProductsSkeleton />}>
             <RecommendedProducts
+               lists={[Category.BUSSINESS]}
                id={getUrlParams(params.id as string)}
                params={`${params.lang}/doi-tac-doanh-nghiep`}
             />

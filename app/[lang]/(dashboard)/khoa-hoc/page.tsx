@@ -1,91 +1,92 @@
 import React from 'react'
-import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid-origin'
-import {
-   IconArrowWaveRightUp,
-   IconBoxAlignRightFilled,
-   IconBoxAlignTopLeft,
-   IconClipboardCopy,
-   IconFileBroken,
-   IconSignature,
-   IconTableColumn
-} from '@tabler/icons-react'
-import { Boxes } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { PageProps } from '@/types/utils'
+import { Category, PageProps } from '@/types/utils'
+import { getBulletins } from '@/actions/bulletin'
+import { customSlugify } from '@/utils/slugify'
+import Image from 'next/image'
+import { Bulletin } from '@prisma/client'
+import PaginationSizePattern from '@/components/pattern/paging-size-pattern'
+import { Link } from 'next-view-transitions'
+import { getDictionary } from '@/lib/dictionary'
 
-const Skeleton = () => (
-   <div className='flex flex-1 w-full h-full min-h-[6rem] rounded-xl bg-gradient-to-br from-neutral-200 dark:from-neutral-900 dark:to-neutral-800 to-neutral-100'></div>
-)
-const items = [
-   {
-      title: 'The Dawn of Innovation',
-      description: 'Explore the birth of groundbreaking ideas and inventions.',
-      header: <Skeleton />,
-      icon: <IconClipboardCopy className='h-4 w-4 text-neutral-500' />
-   },
-   {
-      title: 'The Digital Revolution',
-      description: 'Dive into the transformative power of technology.',
-      header: <Skeleton />,
-      icon: <IconFileBroken className='h-4 w-4 text-neutral-500' />
-   },
-   {
-      title: 'The Art of Design',
-      description: 'Discover the beauty of thoughtful and functional design.',
-      header: <Skeleton />,
-      icon: <IconSignature className='h-4 w-4 text-neutral-500' />
-   },
-   {
-      title: 'The Power of Communication',
-      description: 'Understand the impact of effective communication in our lives.',
-      header: <Skeleton />,
-      icon: <IconTableColumn className='h-4 w-4 text-neutral-500' />
-   },
-   {
-      title: 'The Pursuit of Knowledge',
-      description: 'Join the quest for understanding and enlightenment.',
-      header: <Skeleton />,
-      icon: <IconArrowWaveRightUp className='h-4 w-4 text-neutral-500' />
-   },
-   {
-      title: 'The Joy of Creation',
-      description: 'Experience the thrill of bringing ideas to life.',
-      header: <Skeleton />,
-      icon: <IconBoxAlignTopLeft className='h-4 w-4 text-neutral-500' />
-   },
-   {
-      title: 'The Spirit of Adventure',
-      description: 'Embark on exciting journeys and thrilling discoveries.',
-      header: <Skeleton />,
-      icon: <IconBoxAlignRightFilled className='h-4 w-4 text-neutral-500' />
+export default async function Page({ params, searchParams }: PageProps) {
+   const { header, page } = await getDictionary(params.lang)
+
+   const bulletins = await getBulletins({
+      ...searchParams,
+      size: '9',
+      category: [Category.COURSES]
+   })
+
+   const Item = ({ item }: { item: Bulletin }) => {
+      return (
+         <div className='p-4 w-full md:w-1/3'>
+            <div className='h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden'>
+               <Image
+                  src={item.imageUrl}
+                  alt={item.title}
+                  width={400}
+                  height={400}
+                  className='lg:h-48 md:h-36 w-full object-cover object-center'
+               />
+               <div className='p-4'>
+                  <h1 className='line-clamp-1  text-lg title-font font-bold text-green-400 mb-1'>
+                     {item.title}
+                  </h1>
+                  <h2 className='title-font text-sm font-medium text-gray-900 mb-3 line-clamp-1'>
+                     {item.description}
+                  </h2>
+                  <div className='flex items-center justify-between '>
+                     <Link
+                        href={`/${params.lang}/khoa-hoc/${customSlugify(item.title)}__${item.id}.html`}
+                        className='text-green-600  md:mb-2 lg:mb-0'
+                     >
+                        <p className='inline-flex items-center'>
+                           {page.home_page.read_more}
+                           <svg
+                              className='w-4 h-4 ml-2'
+                              viewBox='0 0 24 24'
+                              stroke='currentColor'
+                              strokeWidth='2'
+                              fill='none'
+                              strokeLinecap='round'
+                              strokeLinejoin='round'
+                           >
+                              <path d='M5 12h14'></path>
+                              <path d='M12 5l7 7-7 7'></path>
+                           </svg>
+                        </p>
+                     </Link>
+                     <p className='text-muted-foreground'>
+                        {item.createdAt.toLocaleDateString()}
+                     </p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      )
    }
-]
 
-export default function Page({ params }: PageProps) {
    return (
       <div className='md:pt-10'>
          <div className='md:h-72 relative w-full overflow-hidden bg-blue-200/20 flex flex-col items-center justify-center rounded-lg'>
             <div className='absolute  pointer-events-none' />
             <h1
                className={cn(
-                  'text-center py-8 text-4xl font-bold leading-none md:text-5xl xl:text-6xl text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-blue-600 via-30% to-green-600 '
+                  'text-center py-8 text-4xl font-bold leading-none md:text-5xl xl:text-6xl text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-blue-600 via-30% to-green-600 uppercase'
                )}
             >
-               KHÓA HỌC
+               {header.course}
             </h1>
          </div>
-         <BentoGrid className='max-w-5xl mx-auto pt-10'>
-            {items.map((item, i) => (
-               <BentoGridItem
-                  key={i}
-                  url={`/${params.lang}/`}
-                  title={item.title}
-                  description={item.description}
-                  header={''}
-                  className={i === 3 || i === 6 ? 'md:col-span-2' : ''}
-               />
+         <div className='max-w-5xl mx-auto pt-10 flex flex-wrap -m-4'>
+            {bulletins.content.map((item, i) => (
+               <Item item={item} key={i} />
             ))}
-         </BentoGrid>
+         </div>
+         <div className='max-w-5xl mx-auto container py-10'>
+            <PaginationSizePattern data={bulletins} />
+         </div>
       </div>
    )
 }

@@ -8,16 +8,14 @@ import Image from 'next/image'
 
 export async function RecommendedProducts({
    id,
-   params
+   params,
+   lists
 }: {
    params: string
    id: string
+   lists: Category[]
 }) {
-   const relatests = await getLatestBulletins(id, [
-      Category.NEWS,
-      Category.ANNOUNCEMENTS,
-      Category.EVENTS
-   ])
+   const relatests = await getLatestBulletins(id, lists)
 
    return (
       <div className='space-y-6 py-8 container mx-auto max-w-6xl'>
