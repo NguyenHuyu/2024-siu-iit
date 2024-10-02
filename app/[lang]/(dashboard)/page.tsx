@@ -21,11 +21,7 @@ export const metadata = {
    title: 'IIT - Trang chủ'
 }
 
-interface Props extends PageProps {
-   searchParams: DefaultSearchParams
-}
-
-export default async function page({ params }: Props) {
+export default async function page({ params, searchParams }: PageProps) {
    const { page } = await getDictionary(params.lang)
 
    const news = await getBulletins({
@@ -68,19 +64,21 @@ export default async function page({ params }: Props) {
       <>
          <Banner />
 
-         <Center dataCenter={dataCenter} />
+         <Center dataCenter={dataCenter} title={page.home_page.title_center} />
 
          <div className='grid grid-cols-1 md:grid-cols-3 max-w-[87rem] mx-auto bg-sky-300/10 rounded-md cursor-pointer my-4'>
             <div className='md:col-span-2 p-1'>
                <Card>
                   <CardHeader className='flex justify-between'>
-                     <CardTitle className='text-2xl font-semibold'>Tin tức</CardTitle>
+                     <CardTitle className='text-2xl font-semibold'>
+                        {page.home_page.news}
+                     </CardTitle>
                      <Link href={`/${params.lang}/ban-tin`}>
                         <Button
                            variant='outline'
                            className='inline-flex gap-1 items-center'
                         >
-                           Xem thêm <ExternalLinkIcon size={20} />
+                           {page.home_page.read_more} <ExternalLinkIcon size={20} />
                         </Button>
                      </Link>
                   </CardHeader>
@@ -129,13 +127,15 @@ export default async function page({ params }: Props) {
             <div className='md:col-span-1 p-1'>
                <Card>
                   <CardHeader className='flex justify-between'>
-                     <CardTitle className='text-2xl font-semibold'>Thông báo</CardTitle>
+                     <CardTitle className='text-2xl font-semibold'>
+                        {page.home_page.notify}
+                     </CardTitle>
                      <Link href={`/${params.lang}/ban-tin`}>
                         <Button
                            variant='outline'
                            className='inline-flex gap-1 items-center'
                         >
-                           Xem thêm <ExternalLinkIcon size={20} />
+                           {page.home_page.read_more} <ExternalLinkIcon size={20} />
                         </Button>
                      </Link>
                   </CardHeader>
@@ -184,7 +184,7 @@ export default async function page({ params }: Props) {
             <Card>
                <CardHeader>
                   <CardTitle className='text-2xl font-semibold'>
-                     Sự kiện sắp tới
+                     {page.home_page.upcoming}
                   </CardTitle>
                </CardHeader>
                <UpcomingEvent events={events.content} />

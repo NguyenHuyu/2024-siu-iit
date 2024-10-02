@@ -14,9 +14,10 @@ interface CenterProps {
       altImage: string
       ref: string
    }[]
+   title: string
 }
 
-export default function Center({ dataCenter }: CenterProps) {
+export default function Center({ dataCenter, title }: CenterProps) {
    return (
       <div className='w-full'>
          <LampContainer>
@@ -30,7 +31,7 @@ export default function Center({ dataCenter }: CenterProps) {
                }}
                className='bg-gradient-to-br from-black to-slate-500 py-4 bg-clip-text text-center text-2xl md:text-4xl font-medium tracking-tight text-transparent lg:text-6xl'
             >
-               CÁC ĐƠN VỊ TRỰC THUỘC
+               {title}
             </motion.h2>
          </LampContainer>
          <ScrollArea className='w-full md:w-full whitespace-nowrap p-2 md:p-4'>
