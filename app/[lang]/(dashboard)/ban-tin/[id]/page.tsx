@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
          description: news?.title,
          type: 'website',
          locale: 'vi_VN',
-         url: `https://iit.siu.edu.vn/${params.lang}/${customSlugify(news.title)}__${news.id}.html`,
+         url: `https://iit.siu.edu.vn/${params.lang}/ban-tin/${customSlugify(news.title)}__${news.id}.html`,
          images: [
             {
                url: news.imageUrl,
