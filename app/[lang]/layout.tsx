@@ -3,9 +3,13 @@ import { Inter } from 'next/font/google'
 import { ViewTransitions } from 'next-view-transitions'
 import './globals.css'
 import ClientProvider from '@/provider/client-provider'
-import { Locale } from '@/lib/i18n.config'
+import { i18n, Locale } from '@/lib/i18n.config'
 
 const inter = Inter({ subsets: ['latin'] })
+
+export async function generateStaticParams() {
+   return i18n.locales.map((locale) => ({ lang: locale }))
+}
 
 export const metadata: Metadata = {
    metadataBase: new URL('https://iit.siu.edu.vn'),
