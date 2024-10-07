@@ -17,13 +17,7 @@ import { Button } from '@/components/ui/button'
 import { ExternalLinkIcon } from 'lucide-react'
 import { BentoGrid, BentoGridItem } from '@/components/ui/bento-grid'
 
-export const metadata = {
-   title: 'IIT - Trang chủ',
-   description: 'IIT - Viện công nghệ & sáng tạo - SIU',
-   metadataBase: new URL('https://iit.siu.edu.vn')
-}
-
-export default async function page({ params }: PageProps) {
+export default async function Page({ params }: PageProps) {
    const { page } = await getDictionary(params.lang)
 
    const news = await getBulletins({

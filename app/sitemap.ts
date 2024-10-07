@@ -15,6 +15,24 @@ export default function Sitemap(): MetadataRoute.Sitemap {
          }
       },
       {
+         url: 'https://iit.siu.edu.vn',
+         lastModified: new Date(),
+         changeFrequency: 'always',
+         priority: 0.8
+      },
+      {
+         url: 'https://iit.siu.edu.vn/vi',
+         lastModified: new Date(),
+         changeFrequency: 'always',
+         priority: 0.8
+      },
+      {
+         url: 'https://iit.siu.edu.vn/en',
+         lastModified: new Date(),
+         changeFrequency: 'always',
+         priority: 0.8
+      },
+      {
          url: 'https://iit.siu.edu.vn/tin-tuc',
          lastModified: new Date(),
          changeFrequency: 'always',
