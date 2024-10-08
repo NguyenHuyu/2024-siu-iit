@@ -1,9 +1,31 @@
+import { getBulletins } from '@/actions/bulletin'
+import { customSlugify } from '@/utils/slugify'
 import type { MetadataRoute } from 'next'
+import { cookies } from 'next/headers'
 
-export default function Sitemap(): MetadataRoute.Sitemap {
+export default async function Sitemap(): Promise<MetadataRoute.Sitemap> {
+   const baseUrl = 'https://iit.siu.edu.vn'
+   const language = cookies().get('language')?.value as string
+
+   const bulletin = await getBulletins({ size: '10', category: ['NEWS', 'EVENTS'] })
+
+   const log = bulletin.content.map((item) => {
+      return {
+         url: `${baseUrl}/${language}/ban-tin/${customSlugify(item.title)}__${item.id}.html`,
+         lastModified: new Date(item.updatedAt),
+         priority: 1,
+         alternates: {
+            languages: {
+               vi: `${baseUrl}/vi/ban-tin/${customSlugify(item.title)}__${item.id}.html`,
+               en: `${baseUrl}/en/ban-tin/${customSlugify(item.title)}__${item.id}.html`
+            }
+         }
+      }
+   })
+
    return [
       {
-         url: 'https://iit.siu.edu.vn',
+         url: baseUrl,
          lastModified: new Date(),
          changeFrequency: 'always',
          priority: 1,
@@ -13,24 +35,6 @@ export default function Sitemap(): MetadataRoute.Sitemap {
                en: 'https://iit.siu.edu.vn/en'
             }
          }
-      },
-      {
-         url: 'https://iit.siu.edu.vn',
-         lastModified: new Date(),
-         changeFrequency: 'always',
-         priority: 0.8
-      },
-      {
-         url: 'https://iit.siu.edu.vn/vi',
-         lastModified: new Date(),
-         changeFrequency: 'always',
-         priority: 0.8
-      },
-      {
-         url: 'https://iit.siu.edu.vn/en',
-         lastModified: new Date(),
-         changeFrequency: 'always',
-         priority: 0.8
       },
       {
          url: 'https://iit.siu.edu.vn/tin-tuc',
@@ -43,6 +47,7 @@ export default function Sitemap(): MetadataRoute.Sitemap {
                en: 'https://iit.siu.edu.vn/en/tin-tuc'
             }
          }
-      }
+      },
+      ...log
    ]
 }
