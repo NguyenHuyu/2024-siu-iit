@@ -10,6 +10,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
    metadataBase: new URL('https://iit.siu.edu.vn'),
    keywords: ['IIT', 'SIU', 'siu iit'],
+
    title: {
       default: 'IIT - Viện Công nghệ & Sáng tạo',
       template: `%s | IIT - Viện Công nghệ & Sáng tạo`
