@@ -8,9 +8,31 @@ import { customSlugify } from '@/utils/slugify'
 import PaginationSizePattern from '@/components/pattern/paging-size-pattern'
 import InputPattern from '@/components/pattern/input-search-pattern'
 import { getDictionary } from '@/lib/dictionary'
+import { Metadata } from 'next'
 
 interface Props extends PageProps {
    searchParams: DefaultSearchParams
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+   const { page, navigation } = await getDictionary(params.lang)
+
+   return {
+      title: page.home_page.bulletin,
+      description: navigation.description,
+      openGraph: {
+         title: page.home_page.bulletin,
+         description: navigation.description,
+         images: [
+            {
+               url: 'https://iit.siu.edu.vn/opengraph-image.jpg',
+               width: 800,
+               height: 600,
+               alt: 'SIU IIT - Viện Công nghệ & Sáng tạo'
+            }
+         ]
+      }
+   }
 }
 
 export default async function Page({ searchParams, params }: Props) {
