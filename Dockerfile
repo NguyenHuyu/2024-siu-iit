@@ -32,9 +32,9 @@ COPY . .
 # Copy the environment file
 COPY .env.local .env.local
 
-RUN sudo npx prisma generate
+RUN npx prisma generate
 # Build the project
-RUN sudo pnpm build
+RUN pnpm build
 
 # Production image, copy all the files and run Next.js
 FROM base AS runner
@@ -43,7 +43,7 @@ WORKDIR /app
 ENV NODE_ENV production
 
 # Install pnpm in runner stage
-RUN sudo npm install -g pnpm
+RUN npm install -g pnpm
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
