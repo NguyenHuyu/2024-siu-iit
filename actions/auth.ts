@@ -87,8 +87,6 @@ export async function login(state: LoginFormState, formData: FormData) {
 
    await createSession(user)
 
-   redirect('/vi/admin')
-
    return {
       message: 'Login successful'
    }
