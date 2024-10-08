@@ -46,7 +46,7 @@ const nextConfig = {
    experimental: {
       trustHost: true,
       serverActions: {
-         allowedOrigins: ['iit.siu.edu.vn', 'localhost:8010']
+         allowedOrigins: ['iit.siu.edu.vn']
       }
    },
    typescript: {
