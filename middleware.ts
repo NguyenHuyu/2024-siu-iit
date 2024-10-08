@@ -1,7 +1,7 @@
 import { NextFetchEvent, NextMiddleware, NextRequest, NextResponse } from 'next/server'
 import { match as matchLocale } from '@formatjs/intl-localematcher'
 import { i18n } from '@/lib/i18n.config'
-import { publicRoutes, protectedRoutes, authRoutes } from '@/routes'
+import { protectedRoutes, authRoutes } from '@/routes'
 import { cookies } from 'next/headers'
 import { decrypt } from '@/lib/session'
 
@@ -56,7 +56,6 @@ async function withAuthMiddleware(request: NextRequest) {
    const isAuthRoutes = authRoutes.includes(
       removeTwoPathSegments(request.nextUrl.pathname)
    )
-
    if (isAdminStartWith && !session && isProtectedRoute) {
       return NextResponse.redirect(new URL('/login', request.nextUrl))
    }
