@@ -85,7 +85,9 @@ export async function login(state: LoginFormState, formData: FormData) {
       }
    }
 
-   await createSession(user)
+   await createSession(user.email)
+
+   redirect('/vi/admin')
 
    return {
       message: 'Login successful'
