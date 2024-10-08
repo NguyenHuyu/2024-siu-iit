@@ -74,6 +74,6 @@ export default withI18nMiddleware(withAuthMiddleware)
 
 export const config = {
    matcher: [
-      '/((?!api|_next/image|_next/static|favicon.ico|manifest.json|twitter-image.jpg|opengraph-image.jpg|apple-icon.jpg|manifest.webmanifest|sitemap.xml|sitemap.txt|og-image.png|shortcut-icon.png|robots.txt|icon.tsx|icon.png|apple-icon.png).*)'
+      '/((?!api|_next/image|_next/static|favicon.ico|manifest.json|twitter-image.jpg|opengraph-image.jpg|apple-icon.jpg|manifest.webmanifest|sitemap.xml|og-image.png|shortcut-icon.png|robots.txt|icon.tsx|icon.png|apple-icon.png).*)'
    ]
 }

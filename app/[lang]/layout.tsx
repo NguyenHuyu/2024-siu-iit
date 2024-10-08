@@ -7,17 +7,22 @@ import { i18n, Locale } from '@/lib/i18n.config'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export async function generateStaticParams() {
-   return i18n.locales.map((locale) => ({ lang: locale }))
-}
-
 export const metadata: Metadata = {
    metadataBase: new URL('https://iit.siu.edu.vn'),
+   keywords: ['IIT', 'SIU', 'siu iit'],
    title: {
       default: 'IIT - Viện Công nghệ & Sáng tạo',
-      template: `%s | IIT`
+      template: `%s | IIT - Viện Công nghệ & Sáng tạo`
    },
    description: 'IIT - Viện công nghệ & sáng tạo - SIU',
+   openGraph: {
+      images: [
+         {
+            url: 'https://iit.siu.edu.vn/opengraph-image.jpg',
+            href: 'https://iit.siu.edu.vn/opengraph-image.jpg'
+         }
+      ]
+   },
    alternates: {
       canonical: '/',
       languages: {
@@ -27,30 +32,26 @@ export const metadata: Metadata = {
    },
    icons: [
       {
-         url: '/favicon.ico',
-         href: '/favicon.ico'
+         url: 'https://iit.siu.edu.vn/favicon.ico',
+         href: 'https://iit.siu.edu.vn/favicon.ico'
       },
       {
-         url: '/icon.jpg',
-         href: '/icon.jpg'
+         url: 'https://iit.siu.edu.vn/icon.jpg',
+         href: 'https://iit.siu.edu.vn/icon.jpg'
       },
       {
-         url: '/shortcut-icon.jpg',
-         href: '/shortcut-icon.jpg'
+         url: 'https://iit.siu.edu.vn/shortcut-icon.jpg',
+         href: 'https://iit.siu.edu.vn/shortcut-icon.jpg'
       },
       {
-         url: '/apple-icon.jpg',
-         href: '/apple-icon.jpg'
+         url: 'https://iit.siu.edu.vn/apple-icon.jpg',
+         href: 'https://iit.siu.edu.vn/apple-icon.jpg'
       }
-   ],
-   openGraph: {
-      images: [
-         {
-            url: '/opengraph-image.jpg',
-            href: '/opengraph-image.jpg'
-         }
-      ]
-   }
+   ]
+}
+
+export async function generateStaticParams() {
+   return i18n.locales.map((locale) => ({ lang: locale }))
 }
 
 export default function RootLayout({
