@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
+
 const nextConfig = {
    images: {
+      unoptimized: true,
       remotePatterns: [
          {
             hostname: 'dnbvietnam.com',
@@ -33,11 +35,15 @@ const nextConfig = {
          {
             hostname: 'kd.io.vn',
             protocol: 'https'
+         },
+         {
+            hostname: 'iit.siu.edu.vn',
+            protocol: 'https'
          }
       ]
    },
+
    experimental: {
-      trustHost: true,
       serverActions: {
          allowedOrigins: ['iit.siu.edu.vn', 'localhost:8010']
       }
